@@ -33,6 +33,33 @@
   
   
   <entry>
+    <title>朋友圈的意义</title>
+    <link href="/2020/09/28/%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84%E6%84%8F%E4%B9%89/"/>
+    <url>/2020/09/28/%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84%E6%84%8F%E4%B9%89/</url>
+    
+    <content type="html"><![CDATA[<p>​    我没有朋友圈。</p><p>​    最近开始玩滑板，新加了一些人，偶尔会有人加完随手想点一下朋友圈看看，却发现我的个人信息页面没有朋友圈入口。然后来问我说“你屏蔽我了吗？”，答“没有屏蔽，就是没有朋友圈，从来没发过”。</p><p>​    其实以前也有发过朋友圈，后来是什么时候全部删除，然后再也没发过了呢？不记得，只记得我全部删除之前朋友圈营业次数也不频繁。因为我觉得朋友圈这种产品的意义我很不明确，也不喜欢。</p><p>​    有人疯狂自拍，有人顿顿鸡汤，有人深夜网抑，有人….是个微商；有人诗与远方精心生活，有人浑浑噩噩得过且过。当把这些内容发到朋友圈的时候，他们是怎么想的呢？希望有人看见自己，看懂自己，还是自己发表一下，纪念而已？</p><p>​    上周教师节，我也挺想发个朋友圈，祝我妈节日快乐。她从教三十多年，今年五十五周岁，法定退休年龄，可以光荣退休了！确实值得高兴。这种内容的朋友圈我想也肯定能收获不少赞！但是，然后呢？赞完然后呢？后来我就给我妈打了个电话。我觉得这种事情没必要发到朋友圈里。</p><p>​    但我现在想发朋友圈。不是想发朋友圈，是想跟她聊天。我在干什么，我在想什么，我喜欢什么，我讨厌什么，我是个什么样的人，我希望她能多了解我一点。</p><p>​    如果没有直接聊天的机会，那就在朋友圈进行展示，也许这就是朋友圈的意义吧。</p><p>​    我喜欢她，时隔多年，有了想要不顾一切，奋不顾身的感觉。但同时又想要精打细算，安排好和她在一起的余生。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>程序员的自我修养</category>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>随笔</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Office2019 Pro Plus安装教程</title>
     <link href="/2019/12/13/Office2019-Pro-Plus%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
     <url>/2019/12/13/Office2019-Pro-Plus%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
@@ -83,6 +110,37 @@
       <tag>CENTOS</tag>
       
       <tag>REDIS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Centos7安装Zookeeper3.6.2(*.tar.gz)</title>
+    <link href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Zookeeper3.6.2/"/>
+    <url>/2019/12/13/Centos7%E5%AE%89%E8%A3%85Zookeeper3.6.2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="单机版"><a href="#单机版" class="headerlink" title="单机版"></a>单机版</h1><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>Centos7</p><p>Zookeeper安装包（apache-zookeeper-3.6.2-bin.tar）</p><p>Zookeeper官网地址<a href="https://zookeeper.apache.org/">https://zookeeper.apache.org/</a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="新建目录"><a href="#新建目录" class="headerlink" title="新建目录"></a>新建目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/software<br>mkdir zookeeper-single<br></code></pre></td></tr></table></figure><h3 id="上传安装包"><a href="#上传安装包" class="headerlink" title="上传安装包"></a>上传安装包</h3><p>将安装包上传到上一步所创建目录</p><p><img src="https://i.loli.net/2021/01/19/dSNnaoVWy3f2hPU.png" alt="zookeeper1.png"></p><h3 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/software/zookeeper-single<br>tar -zxvf apache-zookeeper-3.6.2-bin.tar<br></code></pre></td></tr></table></figure><p><img src="https://i.loli.net/2021/01/19/gfCu8I97inLWQDz.png" alt="zookeeper2.png"></p><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="创建数据文件夹"><a href="#创建数据文件夹" class="headerlink" title="创建数据文件夹"></a>创建数据文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> apache-zookeeper-3.6.2-bin<br>mkdir data<br></code></pre></td></tr></table></figure><p><img src="https://i.loli.net/2021/01/19/vHuadkZjoqC3EP7.png" alt="zookeeper4.png"></p><h3 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#进入conf文件夹，将zoo_sample.cfg复制一份，重命名为zoo.cfg</span><br>/usr/<span class="hljs-built_in">local</span>/software/zookeeper-single/apache-zookeeper-3.6.2-bin/conf<br>cp zoo_sample.cfg zoo.cfg<br></code></pre></td></tr></table></figure><p><img src="https://i.loli.net/2021/01/19/9IFjYhL5G8TBbpn.png" alt="zookeeper3.png"></p><h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim zoo.cfg<br></code></pre></td></tr></table></figure><p>将dataDir值改为前面所创建的data目录，:wq保存</p><p><img src="https://i.loli.net/2021/01/19/DqoxC5ALu7WfUvI.png" alt="zookeeper5.png"></p><p><img src="https://i.loli.net/2021/01/19/yfPHvlUK4p8nEqO.png" alt="zookeeper6.png"></p><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="zookeeper服务端"><a href="#zookeeper服务端" class="headerlink" title="zookeeper服务端"></a>zookeeper服务端</h3><h4 id="运行zookeeper"><a href="#运行zookeeper" class="headerlink" title="运行zookeeper"></a>运行zookeeper</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /bin<br>./zkServer.sh start<br></code></pre></td></tr></table></figure><h4 id="查看zookeeper状态"><a href="#查看zookeeper状态" class="headerlink" title="查看zookeeper状态"></a>查看zookeeper状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">./zkServer.sh status<br>或者<br>ps -ef|grep zookeeper<br></code></pre></td></tr></table></figure><h4 id="停止zookeeper"><a href="#停止zookeeper" class="headerlink" title="停止zookeeper"></a>停止zookeeper</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./zkServer.sh stop<br></code></pre></td></tr></table></figure><p><img src="https://i.loli.net/2021/01/19/3yTfa1nk4IjiKdM.png" alt="zookeeper11.png"></p><h3 id="zookeeper客户端"><a href="#zookeeper客户端" class="headerlink" title="zookeeper客户端"></a>zookeeper客户端</h3><h4 id="运行zkCli"><a href="#运行zkCli" class="headerlink" title="运行zkCli"></a>运行zkCli</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./zkCli.sh<br></code></pre></td></tr></table></figure><p><img src="https://i.loli.net/2021/01/19/ZxRHVEOufTiQwX4.png" alt="zookeeper12.png"></p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="启动报错"><a href="#启动报错" class="headerlink" title="启动报错"></a>启动报错</h3><p><img src="https://i.loli.net/2021/01/19/fJp5XtZolmBkAsW.png" alt="zookeeper8.png"></p><h3 id="问题日志"><a href="#问题日志" class="headerlink" title="问题日志"></a>问题日志</h3><p>Failed to bind to /0.0.0.0:8080</p><p>Address already in use</p><p><img src="https://i.loli.net/2021/01/19/oG1O8lncDIiS2zE.png" alt="zookeeper9.png"></p><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p><img src="https://i.loli.net/2021/01/19/bjxy7wauoIp4LYO.png" alt="zookeeper10.png"></p><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p> <a href="http://roc.havemail.cn/archives/770.html">http://roc.havemail.cn/archives/770.html</a></p><p> <a href="https://www.cnblogs.com/zhiyouwu/p/11546097.html">https://www.cnblogs.com/zhiyouwu/p/11546097.html</a></p><h1 id="伪集群版"><a href="#伪集群版" class="headerlink" title="伪集群版"></a>伪集群版</h1><h2 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h2><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><h2 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h2><h2 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h2><h1 id="集群版"><a href="#集群版" class="headerlink" title="集群版"></a>集群版</h1><h3 id="准备-2"><a href="#准备-2" class="headerlink" title="准备"></a>准备</h3><h2 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h2><h2 id="配置-2"><a href="#配置-2" class="headerlink" title="配置"></a>配置</h2><h2 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>从零开始的编程之路</category>
+      
+      <category>教程</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LINUX</tag>
+      
+      <tag>CENTOS</tag>
+      
+      <tag>ZOOKEEPER</tag>
       
     </tags>
     
