@@ -179,30 +179,25 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note10.RestTemplate/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note10.RestTemplate">
+        <a href="/2020/01/20/SpringCloud%20Note35.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9D%97/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note35.SpringCloud Stream消息驱动消费者模块">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note10.RestTemplate/">SpringCloud Note10.RestTemplate</a>
+        <a href="/2020/01/20/SpringCloud%20Note35.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9D%97/">SpringCloud Note35.SpringCloud Stream消息驱动消费者模块</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note10.RestTemplate/">
+        <a href="/2020/01/20/SpringCloud%20Note35.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9D%97/">
           
           
             
           
-          getForObject方法和getForEntity方法
-postForObject方法和postForEntity方法
-GET请求方法
-POST请求方法
-getForObject方法只包含返回值json字符串
-getForEntity方法还包含http请求相关字段，如状态码、keep-alive之类的字段
-
+          cloud-stream-rabbitmq-consumer8802 消费者模块
+新建Module  cloud-stream-rabbitmq-consumer8802pom.xml123456789101112131415161718192021222324252627282930313233343536373839404142&lt;dependencies&gt;    &lt;!--St
         </a>
       </p>
 
@@ -243,25 +238,25 @@ getForEntity方法还包含http请求相关字段，如状态码、keep-alive之
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note9.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Consul%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note9.消费者通过Consul注册中心调用生产者服务">
+        <a href="/2020/01/20/SpringCloud%20Note34.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%A8%A1%E5%9D%97/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note34.SpringCloud Stream消息驱动生产者模块">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note9.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Consul%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/">SpringCloud Note9.消费者通过Consul注册中心调用生产者服务</a>
+        <a href="/2020/01/20/SpringCloud%20Note34.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%A8%A1%E5%9D%97/">SpringCloud Note34.SpringCloud Stream消息驱动生产者模块</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note9.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Consul%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/">
+        <a href="/2020/01/20/SpringCloud%20Note34.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%A8%A1%E5%9D%97/">
           
           
             
           
-          依赖
-12345&lt;!--consul--&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;            &lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifac
+          cloud-stream-rabbitmq-provider8801 生产者模块
+新建Module cloud-stream-rabbitmq-provider8801pom.xml12345678910111213141516171819202122232425262728293031323334353637383940414243&lt;dependencies&gt;    &lt;!--S
         </a>
       </p>
 
@@ -302,27 +297,28 @@ getForEntity方法还包含http请求相关字段，如状态码、keep-alive之
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note8.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Zookeeper%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note8.消费者通过Zookeeper注册中心调用生产者服务">
+        <a href="/2020/01/20/SpringCloud%20Note33.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note33.SpringCloud Stream消息驱动">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note8.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Zookeeper%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/">SpringCloud Note8.消费者通过Zookeeper注册中心调用生产者服务</a>
+        <a href="/2020/01/20/SpringCloud%20Note33.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/">SpringCloud Note33.SpringCloud Stream消息驱动</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note8.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Zookeeper%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/">
+        <a href="/2020/01/20/SpringCloud%20Note33.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/">
           
           
             
           
-          说明本学习项目中，新建cloud-provider-payment8004作为生产者，新建cloud-consumer-zk-order80作为消费者，将生产者和消费者服务都注册到zookeeper注册中心去，并且通过zookeeper来进行服务调用。
-注1：zookeeper服务器已经搭建完毕，可查看其它教程。
-注2：生产者和消费者在此处不做集群化搭建了，通过单机学习zookeeper的使用。
-
+          为什么引入Spring Cloud StreamMQ（消息中间件） ActiveMQ RabbitMQ RocketMQ Kafka
+同一个项目中可能使用了多种MQ，难以灵活切换、开发、维护
+Stream一种适配绑定的方式，自动的给我们在各种MQ内切换
+是什么屏蔽底层消息中间件的差异，降低切换成本，统一消息的编程模型
+类似于对于多种数据库（Oracle、MySQL。。），我们在项目中使用Hiber
         </a>
       </p>
 
@@ -363,25 +359,30 @@ getForEntity方法还包含http请求相关字段，如状态码、keep-alive之
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note7.Eureka%E8%87%AA%E6%88%91%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note7.Eureka自我保护机制">
+        <a href="/2020/01/20/SpringCloud%20Note32.SpringCloud%20Bus%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E5%AE%9A%E5%90%91%E9%80%9A%E7%9F%A5/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note32.SpringCloud Bus动态刷新定向通知">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note7.Eureka%E8%87%AA%E6%88%91%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/">SpringCloud Note7.Eureka自我保护机制</a>
+        <a href="/2020/01/20/SpringCloud%20Note32.SpringCloud%20Bus%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E5%AE%9A%E5%90%91%E9%80%9A%E7%9F%A5/">SpringCloud Note32.SpringCloud Bus动态刷新定向通知</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note7.Eureka%E8%87%AA%E6%88%91%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6/">
+        <a href="/2020/01/20/SpringCloud%20Note32.SpringCloud%20Bus%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E5%AE%9A%E5%90%91%E9%80%9A%E7%9F%A5/">
           
           
             
           
-          问题打开Eureka控制台页面时，会看到一行红字。
-EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY’RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE S
+          问题
+比如我现在有3355 3366两台配置中心客户端，配置中心服务端配置刷新后，我只想让3355这台客户端的配置进行刷新，3366依然保持原配置不要变
+怎么办？
+上一节的方法会使所有客户端都动态刷新配置
+解决方法
+在post请求uri上加上 微服务名：端口号 即可
+比如现在这个场景 则是 curl -X POST “http://localhost:3344/actuator/bus-refre
         </a>
       </p>
 
@@ -422,29 +423,30 @@ EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY’RE NO
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note6.DiscoveryClient%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note6.DiscoveryClient服务发现">
+        <a href="/2020/01/20/SpringCloud%20Note31.SpringCloud%20Bus%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E5%85%A8%E5%B1%80%E5%B9%BF%E6%92%AD%E9%85%8D%E7%BD%AE/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note31.SpringCloud Bus动态刷新全局广播配置">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note6.DiscoveryClient%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/">SpringCloud Note6.DiscoveryClient服务发现</a>
+        <a href="/2020/01/20/SpringCloud%20Note31.SpringCloud%20Bus%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E5%85%A8%E5%B1%80%E5%B9%BF%E6%92%AD%E9%85%8D%E7%BD%AE/">SpringCloud Note31.SpringCloud Bus动态刷新全局广播配置</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note6.DiscoveryClient%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/">
+        <a href="/2020/01/20/SpringCloud%20Note31.SpringCloud%20Bus%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E5%85%A8%E5%B1%80%E5%B9%BF%E6%92%AD%E9%85%8D%E7%BD%AE/">
           
           
             
           
-          Spring cloud 所提供的DiscoveryClient类，可以用来查看当前注册中心所提供的服务信息
-注入DiscoveryClient bean
-12@Resourceprivate DiscoveryClient discoveryClient;
-
-查看服务信息
-12345678910111213141516@GetMapping(value = &quot;/payment/disc
+          两个设计思路
+1、post访问配置中心服务端/bus/refresh接口，通过服务端广播所有客户端
+2、post访问配置中心其中一个客户端/bus/refresh接口，通过客户端广播到其它客户端
+采用第一种
+修改configcenter3344
+pom.xml新增依赖
+12345&lt;!--spring cloud bus 消息总线RabbitMQ支持--&gt;        &lt;depe
         </a>
       </p>
 
@@ -485,27 +487,28 @@ EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY’RE NO
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note5.actuator%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BF%A1%E6%81%AF%E5%AE%8C%E5%96%84/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note5.actuator微服务信息完善">
+        <a href="/2020/01/20/SpringCloud%20Note30.SpringCloud%20Bus%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note30.SpringCloud Bus消息总线">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note5.actuator%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BF%A1%E6%81%AF%E5%AE%8C%E5%96%84/">SpringCloud Note5.actuator微服务信息完善</a>
+        <a href="/2020/01/20/SpringCloud%20Note30.SpringCloud%20Bus%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF/">SpringCloud Note30.SpringCloud Bus消息总线</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note5.actuator%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BF%A1%E6%81%AF%E5%AE%8C%E5%96%84/">
+        <a href="/2020/01/20/SpringCloud%20Note30.SpringCloud%20Bus%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF/">
           
           
             
           
-          问题：
-现在在Eureka控制台页面，Instances currently registered with Eureka部分的status列，各个微服务名前面带有主机名。而且鼠标指向微服务时，可以看到网页左下角显示的是主机名：端口号。
-但我们实际部署生产的时候，肯定是需要IP、端口号、服务名来确定哪台服务器哪个端口上的哪个服务，所以现在显示的不是我们想要的。
-此时就要完善一下服务的actuato
+          是什么
+Spring Cloud Bud配合Spring Cloud Config可以实现配置的自动动态刷新
+Spring Cloud Bus 是用来将分布式系统的节点与轻量级消息系统链接起来的框架，它整合了Java的事件处理机制和消息中间件的功能。SpringCloud Bus 目前支持RabbitMQ 和kafka。
+能干什么
+管理和传播分布式系统间的消息，就像一个分布式执行器，可用于广播状态
         </a>
       </p>
 
@@ -546,27 +549,29 @@ EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY’RE NO
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note4.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Eureka%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note4.消费者通过Eureka注册中心调用生产者服务">
+        <a href="/2020/01/20/SpringCloud%20Note29.SpringCloud%20Config%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E9%85%8D%E7%BD%AE/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note29.SpringCloud Config客户端动态刷新配置">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note4.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Eureka%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/">SpringCloud Note4.消费者通过Eureka注册中心调用生产者服务</a>
+        <a href="/2020/01/20/SpringCloud%20Note29.SpringCloud%20Config%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E9%85%8D%E7%BD%AE/">SpringCloud Note29.SpringCloud Config客户端动态刷新配置</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note4.%E6%B6%88%E8%B4%B9%E8%80%85%E9%80%9A%E8%BF%87Eureka%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E8%B0%83%E7%94%A8%E7%94%9F%E4%BA%A7%E8%80%85%E6%9C%8D%E5%8A%A1/">
+        <a href="/2020/01/20/SpringCloud%20Note29.SpringCloud%20Config%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E9%85%8D%E7%BD%AE/">
           
           
             
           
-          本学习项目中，生产者为 cloud-provider-payment8001、 cloud-provider-payment8002，消费者为 cloud-consumer-order80。
-且三个微服务都已经注册到Eureka注册中心服务端。
-但之前是在消费者端通过RestTemplate并且直接写死指定生产者实例的ip:port来调用服务。显然这没有使用到Eureka。
-要通过Eureka注册
+          问题
+在上一节，成功配置了配置中心服务端和配置中心客户端，并且实现了服务端从配置仓库获取配置信息，客户端从服务端获取配置信息
+但是有一个问题，在配置仓库里的配置信息修改了之后，配置中心服务端能动态获取到最新的修改后的配置，但是配置中心的客户端，却不能获取到最新的配置信息
+这样，这个配置中心的作用就没意义了，修改了配置仓库的配置信息后，还是要重启每一个微服务客户端
+解决办法
+修改configclie
         </a>
       </p>
 
@@ -607,27 +612,28 @@ EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY’RE NO
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note3.%E6%94%AF%E4%BB%98%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note3.支付服务提供者的集群搭建">
+        <a href="/2020/01/20/SpringCloud%20Note28.SpringCloud%20Config%E5%AE%A2%E6%88%B7%E7%AB%AF/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note28.SpringCloud Config客户端">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note3.%E6%94%AF%E4%BB%98%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">SpringCloud Note3.支付服务提供者的集群搭建</a>
+        <a href="/2020/01/20/SpringCloud%20Note28.SpringCloud%20Config%E5%AE%A2%E6%88%B7%E7%AB%AF/">SpringCloud Note28.SpringCloud Config客户端</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note3.%E6%94%AF%E4%BB%98%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85%E7%9A%84%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">
+        <a href="/2020/01/20/SpringCloud%20Note28.SpringCloud%20Config%E5%AE%A2%E6%88%B7%E7%AB%AF/">
           
           
             
           
-          新建一个Spring boot项目 cloud-provider-payment8002
-我们已经有了一个payment8001服务，但实际中为了高可用等需求，要对服务进行集群化搭建。
-其实微服务的集群，在实际部署到多台服务器的场景中，可以直接部署，它们注册到Eureka注册中心后，虽然端口相同，但每个服务实例的ip不同。
-而在我们这个模拟的场景中，没有真实的多台服务器可以部署，但可以通过修改端口
+          Spring Cloud Config配置中心作为服务端，从配置仓库获取配置文件
+Spring Cloud Config客户端则是每个微服务，要从配置中心获取配置信息
+新建cloud-config-client3355
+pom.xml
+12345678910111213141516171819202122232425262728293031323334353637383940&lt;!--spri
         </a>
       </p>
 
@@ -668,25 +674,27 @@ EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY’RE NO
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note2.%E5%8A%A0%E5%85%A5Eureka%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note2.加入Eureka注册中心">
+        <a href="/2020/01/20/SpringCloud%20Note27.SpringCloud%20Config%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note27.SpringCloud Config配置中心">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note2.%E5%8A%A0%E5%85%A5Eureka%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/">SpringCloud Note2.加入Eureka注册中心</a>
+        <a href="/2020/01/20/SpringCloud%20Note27.SpringCloud%20Config%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/">SpringCloud Note27.SpringCloud Config配置中心</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note2.%E5%8A%A0%E5%85%A5Eureka%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/">
+        <a href="/2020/01/20/SpringCloud%20Note27.SpringCloud%20Config%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/">
           
           
             
           
-          单机版Eureka服务端Eureka服务端不像dubbo或者zookeeper那样要在服务器上安装一个应用，它同其它模块/项目一样，只是一个项目
-新建一个spring boot项目添加eureka服务端依赖12345&lt;!--eureka-server--&gt;&lt;dependency&gt;    &lt;groupId&gt;org.springframework.cloud&lt;
+          Spring Cloud Config配置中心https://docs.spring.io/spring-cloud-config/docs/current/reference/html/
+是什么SpringCloud Config 为微服务架构中的微服务提供集中化的外部配置支持，配置服务器为各个不同微服务应用的所有环境提供了一个中心化的外部配置
+做什么集中管理配置文件
+不同环境不同配置，动态化的
         </a>
       </p>
 
@@ -727,30 +735,34 @@ EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY’RE NO
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note1.%E5%9F%BA%E7%A1%80%E8%AE%A2%E5%8D%95-%E6%94%AF%E4%BB%98%E6%A8%A1%E5%9D%97%E5%88%9B%E5%BB%BA/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note1.基础订单-支付模块创建">
+        <a href="/2020/01/20/SpringCloud%20Note26.SpringCloud%20Gateway%E7%BD%91%E5%85%B3Filter%20factories/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note26.SpringCloud Gateway网关Filter factories">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note1.%E5%9F%BA%E7%A1%80%E8%AE%A2%E5%8D%95-%E6%94%AF%E4%BB%98%E6%A8%A1%E5%9D%97%E5%88%9B%E5%BB%BA/">SpringCloud Note1.基础订单-支付模块创建</a>
+        <a href="/2020/01/20/SpringCloud%20Note26.SpringCloud%20Gateway%E7%BD%91%E5%85%B3Filter%20factories/">SpringCloud Note26.SpringCloud Gateway网关Filter factories</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note1.%E5%9F%BA%E7%A1%80%E8%AE%A2%E5%8D%95-%E6%94%AF%E4%BB%98%E6%A8%A1%E5%9D%97%E5%88%9B%E5%BB%BA/">
+        <a href="/2020/01/20/SpringCloud%20Note26.SpringCloud%20Gateway%E7%BD%91%E5%85%B3Filter%20factories/">
           
           
             
           
-          订单模块 cloud-consumer-order80
-支付模块 cloud-provider-payment8001
-在order80模块中通过spring提供的RestTemplate类进行远程调用，RestTemplate实质上就是对httpClient的一层封装
-测试url
-直接访问payment8001的接口
-http://localhost:8001/payment/get/1
-通过c
+          Gateway Filter Factories是什么？
+是个过滤器
+生命周期
+pre
+post
+种类
+GatewayFilter  31种
+GlobalFilter  10种
+官网文档
+https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gatewayfilter-factories
+自定义过滤器自定义
         </a>
       </p>
 
@@ -791,7 +803,7 @@ http://localhost:8001/payment/get/1
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

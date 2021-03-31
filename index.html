@@ -413,38 +413,26 @@ Quick
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note16.Hystrix/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note16.Hystrix">
+        <a href="/2020/01/20/SpringCloud%20Note41.SpringCloud%20Alibaba%20Nacos%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%8A%9F%E8%83%BD/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note41.SpringCloud Alibaba Nacos服务注册中心功能">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note16.Hystrix/">SpringCloud Note16.Hystrix</a>
+        <a href="/2020/01/20/SpringCloud%20Note41.SpringCloud%20Alibaba%20Nacos%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%8A%9F%E8%83%BD/">SpringCloud Note41.SpringCloud Alibaba Nacos服务注册中心功能</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note16.Hystrix/">
+        <a href="/2020/01/20/SpringCloud%20Note41.SpringCloud%20Alibaba%20Nacos%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%8A%9F%E8%83%BD/">
           
           
             
           
-          Hystrix用处服务降级fallback服务器忙，请稍后再试，不让客户端等待并立刻返回一个友好提示
-哪些情况会出现服务降级
-
-程序运行异常
-
-超时
-
-服务熔断触发服务降级
-
-线程池/信号量打满
-
-
-服务熔断break类似保险丝，达到最大服务访问量后，直接拒绝访问，拉闸限电，然后调用服务降级的方法返回友好提示
-降级-&gt;熔断-&gt;恢复服务链路
-服务限流limit秒杀等高并发操作，严禁一窝蜂
+          Nacos作为服务注册中心官网教程https://spring-cloud-alibaba-group.github.io/github-pages/hoxton/en-us/index.html#_spring_cloud_alibaba_nacos_discovery
+服务提供者新建cloudalibaba-provider-payment9001 Module
+pom.xml12345678
         </a>
       </p>
 
@@ -485,29 +473,28 @@ Quick
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note15.OpenFeign%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note15.OpenFeign日志打印">
+        <a href="/2020/01/20/SpringCloud%20Note40.SpringCloud%20Alibaba%20Nacos/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note40.SpringCloud Alibaba Nacos">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note15.OpenFeign%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0/">SpringCloud Note15.OpenFeign日志打印</a>
+        <a href="/2020/01/20/SpringCloud%20Note40.SpringCloud%20Alibaba%20Nacos/">SpringCloud Note40.SpringCloud Alibaba Nacos</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note15.OpenFeign%E6%97%A5%E5%BF%97%E6%89%93%E5%8D%B0/">
+        <a href="/2020/01/20/SpringCloud%20Note40.SpringCloud%20Alibaba%20Nacos/">
           
           
             
           
-          OpenFeign提供了日志打印功能，通过配置来调整日志级别，对Feign接口的调用进行监控
-日志级别NONE 默认的，不显示任何日志 
-BASIC 仅记录请求方法URL响应状态码及执行时间
-HEADERS 除了BASIC中的内容外，还有请求和响应的头信息
-FULL 除了HEADERS中的内容外，还有请求和响应的正文及元数据
-配置Bean12345678@Configurationpublic c
+          为什么叫Nacosna是naming  co是config s是service 即服务注册与发现加上配置中心服务
+是什么一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台
+Nacos: Dynamic Naming and Configuration Service
+Nacos就是注册中心加配置中心的组合框架(=eureka+config+bus)
+能干吗替代eureka做服务注册中心
         </a>
       </p>
 
@@ -548,27 +535,29 @@ FULL 除了HEADERS中的内容外，还有请求和响应的正文及元数据
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note14.OpenFeign%E8%B6%85%E6%97%B6%E6%8E%A7%E5%88%B6/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note14.OpenFeign超时控制">
+        <a href="/2020/01/20/SpringCloud%20Note39.SpringCloud%20Alibaba/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note39.SpringCloud Alibaba">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note14.OpenFeign%E8%B6%85%E6%97%B6%E6%8E%A7%E5%88%B6/">SpringCloud Note14.OpenFeign超时控制</a>
+        <a href="/2020/01/20/SpringCloud%20Note39.SpringCloud%20Alibaba/">SpringCloud Note39.SpringCloud Alibaba</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note14.OpenFeign%E8%B6%85%E6%97%B6%E6%8E%A7%E5%88%B6/">
+        <a href="/2020/01/20/SpringCloud%20Note39.SpringCloud%20Alibaba/">
           
           
             
           
-          OpenFeign底层是Ribbon，因此自带了负载均衡，因此，超时控制也是由Ribbon实现的，Ribbon超时时间为1秒
-在服务端 提供者 接口层加上测试接口，线程等待3秒才返回响应，然后在客户端 消费者 通过OpenFeign调用，会看到直接报错 Read time out。
-在application.yml里加上下面配置后，再次访问测试接口，没有报错了
-1234#OpenFeign超时控制
+          是什么
+https://developer.aliyun.com/article/740001
+为什么
+能干嘛
+服务限流降级：默认支持Servlet、Feign、Rest Template、Dubbo和RocketMQ限流降级功能的接入，可以在运行时通过控制台实施修改限流降级规则，还支持查看限流降级Metrics监控。
+服务注册与发现：适配Spring Cloud服务注册与发现标准，默认集成了Ri
         </a>
       </p>
 
@@ -609,27 +598,28 @@ FULL 除了HEADERS中的内容外，还有请求和响应的正文及元数据
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note13.OpenFeign%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note13.OpenFeign服务调用">
+        <a href="/2020/01/20/SpringCloud%20Note38.SpringCloud%20Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note38.SpringCloud Sleuth分布式请求链路跟踪">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note13.OpenFeign%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/">SpringCloud Note13.OpenFeign服务调用</a>
+        <a href="/2020/01/20/SpringCloud%20Note38.SpringCloud%20Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/">SpringCloud Note38.SpringCloud Sleuth分布式请求链路跟踪</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note13.OpenFeign%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/">
+        <a href="/2020/01/20/SpringCloud%20Note38.SpringCloud%20Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/">
           
           
             
           
-          有了Ribbon进行服务调用，为什么还要用OpenFeign？Ribbon调用时要指定服务名，然后通过具体的uri进行服务调用
-OpenFeign则是在客户端声明一个和服务端相同的接口，但无需实现，在服务端进行实现，客户端调用的时候直接调用自己这一侧的接口即可
-Ribbon要结合RestTemplate使用，OpenFeign使用接口加注解即可进行服务端的接口调用
-Feign和OpenFeign的
+          为什么在微服务框架中，一个由客户端发起的请求在后端系统中会经过多个不同的服务节点调用来协同产生最后的请求结果，每一个前端请求都会形成一条复杂的分布式服务调用链路，链路中的任何一环出现高延迟或错误都会引起整个请求最后的失败。
+是什么https://spring.io/projects/spring-cloud-sleuth
+zipkin图形化仪表盘
+sleuth负责收集整理 zipkin负责展示
+下
         </a>
       </p>
 
@@ -670,28 +660,34 @@ Feign和OpenFeign的
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note12.%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AA%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note12.手写一个负载均衡轮询算法">
+        <a href="/2020/01/20/SpringCloud%20Note37.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E6%81%AF%E6%8C%81%E4%B9%85%E5%8C%96%E9%97%AE%E9%A2%98/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note37.SpringCloud Stream消息驱动消息持久化问题">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note12.%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AA%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95/">SpringCloud Note12.手写一个负载均衡轮询算法</a>
+        <a href="/2020/01/20/SpringCloud%20Note37.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E6%81%AF%E6%8C%81%E4%B9%85%E5%8C%96%E9%97%AE%E9%A2%98/">SpringCloud Note37.SpringCloud Stream消息驱动消息持久化问题</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note12.%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AA%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%BD%AE%E8%AF%A2%E7%AE%97%E6%B3%95/">
+        <a href="/2020/01/20/SpringCloud%20Note37.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E6%81%AF%E6%8C%81%E4%B9%85%E5%8C%96%E9%97%AE%E9%A2%98/">
           
           
             
           
-          负载均衡算法核心思想接口请求次数 % 服务器集群总数量 = 实际调用服务器位置下标
-每次服务重启后接口请求次数从1开始
-请求次数        集群数量                    均衡到的服务
-​        1        %        2            =    1        payment8001
-​        2        %        2   
+          先说结论：
+group属性同时解决了重复消费和消息丢失的问题
+场景：
+假如现在有一台生产者8801 
+有一台消费者 未自定义分组的8802
+一台消费者 自定义分组yyt的8803
+也就是把刚才的8802配置文件里的group属性删掉
+然后先把8802 8803服务停止掉
+8801继续发送几条消息
+然后启动8802和8803  模拟消费者端服务宕机恢复
+此时 8802  8803两个微服务消费者端接
         </a>
       </p>
 
@@ -732,27 +728,32 @@ Feign和OpenFeign的
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note11.Ribbon/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note11.Ribbon">
+        <a href="/2020/01/20/SpringCloud%20Note36.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E6%81%AF%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E9%97%AE%E9%A2%98/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note37.SpringCloud Stream消息驱动消息持久化问题">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note11.Ribbon/">SpringCloud Note11.Ribbon</a>
+        <a href="/2020/01/20/SpringCloud%20Note36.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E6%81%AF%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E9%97%AE%E9%A2%98/">SpringCloud Note37.SpringCloud Stream消息驱动消息持久化问题</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note11.Ribbon/">
+        <a href="/2020/01/20/SpringCloud%20Note36.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E6%81%AF%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E9%97%AE%E9%A2%98/">
           
           
             
           
-          Ribbon负载均衡规则Ribbon核心组件IRule:根据特定算法从服务列表中选取一个要访问的服务，算法列表如下
-com.netflix.loadbalancer.RoundRobinRule    轮询
-com.netflix.loadbalancer.RandomRule    随机
-com.netflix.loadbalancer.RetryRule    先按照RoundRobinRul
+          新建cloud-stream-rabbitmq-consumer8803项目 除了端口号之外 和8802都一样
+启动
+然后再像上一节中那样测试
+发现问题：8801发送一条消息之后
+8802和8803都接收到了这条消息
+出现了消息的重复消费问题
+产生原因：查看rabbitmq控制台 exchanges页面
+点击左侧heartExchange
+可以看到bindings下面 this exchange 
         </a>
       </p>
 
@@ -793,7 +794,7 @@ com.netflix.loadbalancer.RetryRule    先按照RoundRobinRul
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

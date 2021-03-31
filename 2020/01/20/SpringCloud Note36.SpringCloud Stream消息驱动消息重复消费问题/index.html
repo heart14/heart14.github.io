@@ -1,0 +1,494 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="茕茕孑立，踽踽独行">
+  <meta name="author" content="liiwe">
+  <meta name="keywords" content="">
+  <title>SpringCloud Note37.SpringCloud Stream消息驱动消息持久化问题 - Your`s Heart</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"_","loop":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Your`s Heart</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SpringCloud Note37.SpringCloud Stream消息驱动消息持久化问题">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      liiwe
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-20 19:43" pubdate>
+        2020年1月20日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      650 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SpringCloud Note37.SpringCloud Stream消息驱动消息持久化问题</h1>
+            
+            <div class="markdown-body">
+              <p>新建cloud-stream-rabbitmq-consumer8803项目 除了端口号之外 和8802都一样</p>
+<p>启动</p>
+<p>然后再像上一节中那样测试</p>
+<h4 id="发现问题："><a href="#发现问题：" class="headerlink" title="发现问题："></a>发现问题：</h4><p>8801发送一条消息之后</p>
+<p>8802和8803都接收到了这条消息</p>
+<p>出现了消息的重复消费问题</p>
+<h4 id="产生原因："><a href="#产生原因：" class="headerlink" title="产生原因："></a>产生原因：</h4><p>查看rabbitmq控制台 exchanges页面</p>
+<p>点击左侧heartExchange</p>
+<p>可以看到bindings下面 this exchange to下面有两行内容  它们就代表了现在案例中的8802 和8803</p>
+<p>而这两个消费者的组名是rabbitmq系统默认生成的匿名随机组名</p>
+<p>heartExchange.anonymous.LIyuvRkxSVW9n2gT42-bYg </p>
+<p>heartExchange.anonymous.TheiP25fSDqOvFIi-X_ItA</p>
+<p>也就是说这两个消费者处于不同组</p>
+<p>所以产生了重复消费的问题</p>
+<p>在Stream中处于同一个group中的多个消费者是竞争关系，能够保证消息只会被同组的唯一一个应用消费一次</p>
+<p>而不同group是可以全面消费（重复消费）的</p>
+<p>同一组内会发生竞争关系，只有其中一个可以消费</p>
+<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p>使用Stream中的消息分组来解决</p>
+<p>也就是不要使用rabbitmq默认生成的随机组名</p>
+<p>而是自定义组名来控制微服务应用的分组即可</p>
+<p>具体操作：</p>
+<p>在消费者微服务端的配置文件中添加分组配置，并且让不想重复消费消息的微服务实例的分组相同</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">cloud-stream-consumer</span><br>  <span class="hljs-comment">#Spring Cloud Stream配置</span><br>  <span class="hljs-attr">cloud:</span><br>    <span class="hljs-attr">stream:</span><br>      <span class="hljs-attr">binders:</span> <span class="hljs-comment">#在此处配置要绑定的RabbitMQ的服务信息</span><br>        <span class="hljs-attr">defaultRabbit:</span> <span class="hljs-comment">#表示定义的名称，用于与binding整合</span><br>          <span class="hljs-attr">type:</span> <span class="hljs-string">rabbit</span> <span class="hljs-comment">#消息中间件类型</span><br>          <span class="hljs-attr">environment:</span> <span class="hljs-comment">#配置RabbitMQ的相关的环境配置</span><br>            <span class="hljs-attr">spring:</span><br>              <span class="hljs-attr">rabbitmq:</span><br>                <span class="hljs-attr">host:</span> <span class="hljs-string">localhost</span><br>                <span class="hljs-attr">port:</span> <span class="hljs-number">5672</span><br>                <span class="hljs-attr">username:</span> <span class="hljs-string">guest</span><br>                <span class="hljs-attr">password:</span> <span class="hljs-string">guest</span><br>      <span class="hljs-attr">bindings:</span> <span class="hljs-comment">#服务的整合处理</span><br>        <span class="hljs-attr">input:</span> <span class="hljs-comment">#这个名字是一个通道的名称</span><br>          <span class="hljs-attr">destination:</span> <span class="hljs-string">heartExchange</span> <span class="hljs-comment">#表示要使用的Exchange的名称定义</span><br>          <span class="hljs-attr">content-type:</span> <span class="hljs-string">application/json</span> <span class="hljs-comment">#设置消息类型，本次为json，文本则设置为text/plain</span><br>          <span class="hljs-attr">binder:</span> <span class="hljs-string">defaultRabbit</span> <span class="hljs-comment">#设置要绑定的消息服务的具体设置</span><br>          <span class="hljs-attr">group:</span> <span class="hljs-string">yyt</span><br></code></pre></td></tr></table></figure>
+
+<p>注意最后一行的group配置</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>启动eureka7001 eureka7002 </p>
+<p>启动RabbitMQ</p>
+<p>启动rabbitmq-provider8801</p>
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:8801/sendMessage">http://localhost:8801/sendMessage</a></p>
+<p>后台有日志打印</p>
+<p>页面显示发送成功</p>
+<p>rabbitMQ控制台Exchanges页面上可以看到heartExchange</p>
+<p>rabbitMQ控制台首页可以看到曲线变化</p>
+<p>说明生产者端消息发送成功</p>
+<p>启动rabbitmq-consumer8802 rabbitmq-consumer8803</p>
+<p>可以看到 8802 8803都能接收到8801发送的消息  但不会同时接收到同一条消息</p>
+<p>说明重复消费问题解决成功</p>
+<p>注意 默认的同组内轮询接收消息</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JAVA/">JAVA</a>
+                    
+                      <a class="hover-with-bg" href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/01/20/SpringCloud%20Note37.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E6%81%AF%E6%8C%81%E4%B9%85%E5%8C%96%E9%97%AE%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringCloud Note37.SpringCloud Stream消息驱动消息持久化问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/01/20/SpringCloud%20Note35.SpringCloud%20Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9D%97/">
+                        <span class="hidden-mobile">SpringCloud Note35.SpringCloud Stream消息驱动消费者模块</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

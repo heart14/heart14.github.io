@@ -179,34 +179,29 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/01/20/SpringCloud%20Note0.Spring%20Cloud/" target="_self">
-          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note0.Spring Cloud">
+        <a href="/2020/01/20/SpringCloud%20Note25.SpringCloud%20Gateway%E7%BD%91%E5%85%B3Predicate%20factories/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note25.SpringCloud Gateway网关Predicate factories">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/01/20/SpringCloud%20Note0.Spring%20Cloud/">SpringCloud Note0.Spring Cloud</a>
+        <a href="/2020/01/20/SpringCloud%20Note25.SpringCloud%20Gateway%E7%BD%91%E5%85%B3Predicate%20factories/">SpringCloud Note25.SpringCloud Gateway网关Predicate factories</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/01/20/SpringCloud%20Note0.Spring%20Cloud/">
+        <a href="/2020/01/20/SpringCloud%20Note25.SpringCloud%20Gateway%E7%BD%91%E5%85%B3Predicate%20factories/">
           
           
             
           
-          概念构成服务注册与发现 [Eureka|Zookeeper|Consul|Nacos]
-服务调用 [Ribbon|LoadBalancer|Feign|OpenFeign]
-服务熔断
-负载均衡
-服务降级 [Hystrix|resilience4j|Sentienl]
-服务消息队列
-配置中心管理 [Config|Nacos]
-服务网关 [Zuul|Zuul2|Gateway]
-服务监控
-全链路追踪
-
+          断言匹配规则
+官网资料
+https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+其它资料
+https://www.jianshu.com/p/35b60946b8ce
+https://cloud.tencent.com/develope
         </a>
       </p>
 
@@ -247,33 +242,26 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Zookeeper3.6.2/" target="_self">
-          <img src="https://i.loli.net/2021/01/19/cXsxvVrEQRYu6OZ.png" srcset="/img/loading.gif" alt="Centos7安装Zookeeper3.6.2(*.tar.gz)">
+        <a href="/2020/01/20/SpringCloud%20Note24.SpringCloud%20Gateway%E9%85%8D%E7%BD%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note24.SpringCloud Gateway配置动态路由">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Zookeeper3.6.2/">Centos7安装Zookeeper3.6.2(*.tar.gz)</a>
+        <a href="/2020/01/20/SpringCloud%20Note24.SpringCloud%20Gateway%E9%85%8D%E7%BD%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1/">SpringCloud Note24.SpringCloud Gateway配置动态路由</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Zookeeper3.6.2/">
+        <a href="/2020/01/20/SpringCloud%20Note24.SpringCloud%20Gateway%E9%85%8D%E7%BD%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1/">
           
           
             
           
-          单机版准备Centos7
-Zookeeper安装包（apache-zookeeper-3.6.2-bin.tar）
-Zookeeper官网地址https://zookeeper.apache.org/
-安装新建目录12cd /usr/local/softwaremkdir zookeeper-single
-
-
-
-上传安装包将安装包上传到上一步所创建目录
-
-解压安装包12cd /usr/local/
+          问题
+在前面引入网关的操作中，虽然实现了通过网关调用其它微服务的功能，但看下面的配置
+12345678910111213141516171819server:  port: 9527spring:  application:    name: cloud-gateway-service#SpringCloud Gateway网关路由配置  cloud:    gateway:      route
         </a>
       </p>
 
@@ -281,8 +269,8 @@ Zookeeper官网地址https://zookeeper.apache.org/
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-12-13 15:45" pubdate>
-              2019-12-13
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
             </time>
           </div>
         
@@ -292,7 +280,7 @@ Zookeeper官网地址https://zookeeper.apache.org/
             
               <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
             
-              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/%E6%95%99%E7%A8%8B/">教程</a>
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -300,11 +288,9 @@ Zookeeper官网地址https://zookeeper.apache.org/
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/LINUX/">LINUX</a>
+              <a href="/tags/JAVA/">JAVA</a>
             
-              <a href="/tags/CENTOS/">CENTOS</a>
-            
-              <a href="/tags/ZOOKEEPER/">ZOOKEEPER</a>
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -316,26 +302,25 @@ Zookeeper官网地址https://zookeeper.apache.org/
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2019/12/13/Office2019-Pro-Plus%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" target="_self">
-          <img src="https://i.loli.net/2020/02/06/SozXcUNR3qBTtyP.png" srcset="/img/loading.gif" alt="Office2019 Pro Plus安装教程">
+        <a href="/2020/01/20/SpringCloud%20Note23.SpringCloud%20Gateway%E4%B8%A4%E7%A7%8D%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note23.SpringCloud Gateway两种配置方式">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/12/13/Office2019-Pro-Plus%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Office2019 Pro Plus安装教程</a>
+        <a href="/2020/01/20/SpringCloud%20Note23.SpringCloud%20Gateway%E4%B8%A4%E7%A7%8D%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/">SpringCloud Note23.SpringCloud Gateway两种配置方式</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/12/13/Office2019-Pro-Plus%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
+        <a href="/2020/01/20/SpringCloud%20Note23.SpringCloud%20Gateway%E4%B8%A4%E7%A7%8D%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F/">
           
           
             
           
-          说明Office2019专业增强版（零售版）安装教程，并配置只安装Word、Excel、PowerPoint三个应用，不安装其它一些如Access、Publisher之类的不常用的应用。
-由于之前安装2016版本的时候使用网上的一些第三方工具，后来在进程管理器中发现一些工具留下来的常驻进程，所以不想再用一些非官方的工具了！
-本教程所有安装包、工具等均来自微软官方，不使用任何第三方工具，可放心使用！
+          第一种 配置文件中配置
+123456789101112131415161718server:  port: 9527spring:  application:    name: cloud-gateway-service  cloud:    gateway:      routes:        - id: payment_get #路由的ID，没有固定规则，但要求唯一，建议配合服务名    
         </a>
       </p>
 
@@ -343,8 +328,8 @@ Zookeeper官网地址https://zookeeper.apache.org/
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-12-13 15:45" pubdate>
-              2019-12-13
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
             </time>
           </div>
         
@@ -354,7 +339,7 @@ Zookeeper官网地址https://zookeeper.apache.org/
             
               <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
             
-              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/%E6%95%99%E7%A8%8B/">教程</a>
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -362,7 +347,9 @@ Zookeeper官网地址https://zookeeper.apache.org/
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Office/">Office</a>
+              <a href="/tags/JAVA/">JAVA</a>
+            
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -374,34 +361,26 @@ Zookeeper官网地址https://zookeeper.apache.org/
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Redis5-0-7-tar-gz/" target="_self">
-          <img src="https://i.loli.net/2020/02/19/Pi5dcxvWayrOwUn.jpg" srcset="/img/loading.gif" alt="Centos7安装Redis5.0.7(*.tar.gz)">
+        <a href="/2020/01/20/SpringCloud%20Note22.%E5%BC%95%E5%85%A5SpringCloud%20Gateway%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0%E5%88%9D%E6%AD%A5%E5%AF%B9%E5%85%B6%E5%AE%83%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E8%B7%AF%E7%94%B1/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note22.引入SpringCloud Gateway网关实现初步对其它微服务的路由">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Redis5-0-7-tar-gz/">Centos7安装Redis5.0.7(*.tar.gz)</a>
+        <a href="/2020/01/20/SpringCloud%20Note22.%E5%BC%95%E5%85%A5SpringCloud%20Gateway%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0%E5%88%9D%E6%AD%A5%E5%AF%B9%E5%85%B6%E5%AE%83%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E8%B7%AF%E7%94%B1/">SpringCloud Note22.引入SpringCloud Gateway网关实现初步对其它微服务的路由</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Redis5-0-7-tar-gz/">
+        <a href="/2020/01/20/SpringCloud%20Note22.%E5%BC%95%E5%85%A5SpringCloud%20Gateway%E7%BD%91%E5%85%B3%E5%AE%9E%E7%8E%B0%E5%88%9D%E6%AD%A5%E5%AF%B9%E5%85%B6%E5%AE%83%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E8%B7%AF%E7%94%B1/">
           
           
             
           
-          准备Centos7
-Redis安装包（redis-5.0.7.tar.gz）
-安装创建目录12cd /usr/local/softwaremkdir redis-single
-
-然后把redis安装包上传到redis-single目录下
-
-解压安装包1tar -zxvf redis-5.0.7.tar.gz
-
-
-编译进入到上一步解压出来的目录，执行make命令进行编译
-12345cd /redis
+          新建项目cloud-gateway-gateway9527
+pom.xml
+1234567891011121314151617181920212223242526272829303132333435363738&lt;dependencies&gt;        &lt;!--gateway--&gt;        &lt;dependency&gt;            &lt;group
         </a>
       </p>
 
@@ -409,8 +388,8 @@ Redis安装包（redis-5.0.7.tar.gz）
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-12-13 15:45" pubdate>
-              2019-12-13
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
             </time>
           </div>
         
@@ -420,7 +399,7 @@ Redis安装包（redis-5.0.7.tar.gz）
             
               <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
             
-              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/%E6%95%99%E7%A8%8B/">教程</a>
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -428,11 +407,9 @@ Redis安装包（redis-5.0.7.tar.gz）
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/LINUX/">LINUX</a>
+              <a href="/tags/JAVA/">JAVA</a>
             
-              <a href="/tags/CENTOS/">CENTOS</a>
-            
-              <a href="/tags/REDIS/">REDIS</a>
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -444,28 +421,26 @@ Redis安装包（redis-5.0.7.tar.gz）
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85MySQL5-7/" target="_self">
-          <img src="https://i.loli.net/2020/02/17/D7uA3wO84GzUByp.png" srcset="/img/loading.gif" alt="Centos7安装MySQL5.7（*.tar.gz）">
+        <a href="/2020/01/20/SpringCloud%20Note21.Hystrix%20Dashboard/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note21.Hystrix Dashboard">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85MySQL5-7/">Centos7安装MySQL5.7（*.tar.gz）</a>
+        <a href="/2020/01/20/SpringCloud%20Note21.Hystrix%20Dashboard/">SpringCloud Note21.Hystrix Dashboard</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85MySQL5-7/">
+        <a href="/2020/01/20/SpringCloud%20Note21.Hystrix%20Dashboard/">
           
           
             
           
-          准备Centos7
-MySql安装包（mysql-5.7.29-linux-glibc2.12-x86_64.tar.gz）
-安装卸载原有数据库Centos7上一般自带的有mariadb数据库，安装MySQL之前要先卸载自带的mariadb
-1234#查看是否已安装mariadbrpm -qa|grep mariadb#卸载自带mariadbrpm -e --nodeps mariadb-xxx
-
+          新建项目cloud-consumer-hystrix-dashboard9001
+pom.xml
+123456789101112131415161718192021222324252627282930&lt;dependencies&gt;        &lt;!--    hystrix dashboard    --&gt;        &lt;dependency&gt;        
         </a>
       </p>
 
@@ -473,8 +448,8 @@ MySql安装包（mysql-5.7.29-linux-glibc2.12-x86_64.tar.gz）
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-12-13 15:45" pubdate>
-              2019-12-13
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
             </time>
           </div>
         
@@ -484,7 +459,7 @@ MySql安装包（mysql-5.7.29-linux-glibc2.12-x86_64.tar.gz）
             
               <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
             
-              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/%E6%95%99%E7%A8%8B/">教程</a>
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -492,11 +467,9 @@ MySql安装包（mysql-5.7.29-linux-glibc2.12-x86_64.tar.gz）
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/LINUX/">LINUX</a>
+              <a href="/tags/JAVA/">JAVA</a>
             
-              <a href="/tags/CENTOS/">CENTOS</a>
-            
-              <a href="/tags/MYSQL/">MYSQL</a>
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -508,33 +481,26 @@ MySql安装包（mysql-5.7.29-linux-glibc2.12-x86_64.tar.gz）
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Tomcat/" target="_self">
-          <img src="https://i.loli.net/2020/02/16/huNmeKZyVF8tRDx.png" srcset="/img/loading.gif" alt="Centos7安装Tomcat(*.tar.gz)">
+        <a href="/2020/01/20/SpringCloud%20Note20.Hystrix%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note20.Hystrix服务熔断">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Tomcat/">Centos7安装Tomcat(*.tar.gz)</a>
+        <a href="/2020/01/20/SpringCloud%20Note20.Hystrix%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD/">SpringCloud Note20.Hystrix服务熔断</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/12/13/Centos7%E5%AE%89%E8%A3%85Tomcat/">
+        <a href="/2020/01/20/SpringCloud%20Note20.Hystrix%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD/">
           
           
             
           
-          单机单实例准备Centos7服务器
-Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
-安装创建目录为软件的安装先新建一个目录
-123cd /usr/localmkdir softwarecd /usr/local/software
-
-然后创建tomcat要安装的目录
-12mkdir tomcatcd /usr/local/software/tomcat
-
-
-上传安装包把
+          修改cloud-payment-hystrix-payment8001
+controller接口
+123456@GetMapping(value = &quot;/payment/circuit/&#123;id&#125;&quot;)public CommonResult paymentCircuitBreaker(@PathVariable(&quot;id&quot;) Integer i
         </a>
       </p>
 
@@ -542,8 +508,8 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-12-13 15:45" pubdate>
-              2019-12-13
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
             </time>
           </div>
         
@@ -553,7 +519,7 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
             
               <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
             
-              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/%E6%95%99%E7%A8%8B/">教程</a>
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -561,11 +527,9 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/LINUX/">LINUX</a>
+              <a href="/tags/JAVA/">JAVA</a>
             
-              <a href="/tags/CENTOS/">CENTOS</a>
-            
-              <a href="/tags/TOMCAT/">TOMCAT</a>
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -577,25 +541,26 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2019/12/13/LINUX-CRONTAB%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" target="_self">
-          <img src="https://i.loli.net/2020/02/12/hsBOIL2yS5XF3ae.png" srcset="/img/loading.gif" alt="Linux Crontab定时任务">
+        <a href="/2020/01/20/SpringCloud%20Note19.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E7%9A%84%E7%90%86%E8%A7%A3/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note19.Hystrix服务降级和服务熔断的理解">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/12/13/LINUX-CRONTAB%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">Linux Crontab定时任务</a>
+        <a href="/2020/01/20/SpringCloud%20Note19.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E7%9A%84%E7%90%86%E8%A7%A3/">SpringCloud Note19.Hystrix服务降级和服务熔断的理解</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/12/13/LINUX-CRONTAB%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">
+        <a href="/2020/01/20/SpringCloud%20Note19.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E7%9A%84%E7%90%86%E8%A7%A3/">
           
           
             
           
-          一、需求说明项目其中一个模块要统计各分公司下的账号数量等数据，数据从其它相关的几张表中查询出来，已经写好一个存储过程，现在需要在服务器端设置一个定时任务，每天凌晨2点执行该存储过程，将数据汇总到表中。
-二、技术准备1、crontab命令crontab命令常见于Unix和类Unix的操作系统之中，用于设置周期性被执行的指令。该命令从标准输入设备读取指令，并将其存放于“crontab”文件中，以供之后
+          服务降级：被调用的服务不可用或超时时，调用方直接返回一个预设fallback处理结果
+服务熔断：被调用的服务不可用或超时时达到一定次数阈值时，开启熔断机制，之后所有调用请求都不会去调用，而是直接降级处理，然后等一个resettimeout时间后，尝试放请求过去，如果依然不能成功调用，继续直接降级，如果能成功调用，则慢慢加大请求通过的个数，直至系统恢复正常
+熔断是降级的一种，降级不一定熔断，熔断的关
         </a>
       </p>
 
@@ -603,8 +568,8 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-12-13 15:45" pubdate>
-              2019-12-13
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
             </time>
           </div>
         
@@ -614,7 +579,7 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
             
               <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
             
-              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/LINUX/">LINUX</a>
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -622,9 +587,9 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/LINUX/">LINUX</a>
+              <a href="/tags/JAVA/">JAVA</a>
             
-              <a href="/tags/Crontab/">Crontab</a>
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -636,24 +601,26 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2018/02/24/%E6%97%A0%E9%97%AE%E8%A5%BF%E4%B8%9C/" target="_self">
-          <img src="https://i.loli.net/2020/12/13/2gwtYiN1Jek3CRF.jpg" srcset="/img/loading.gif" alt="无问西东">
+        <a href="/2020/01/20/SpringCloud%20Note18.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E9%80%9A%E9%85%8Dfallback/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note18.Hystrix服务降级通配fallback">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2018/02/24/%E6%97%A0%E9%97%AE%E8%A5%BF%E4%B8%9C/">无问西东</a>
+        <a href="/2020/01/20/SpringCloud%20Note18.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E9%80%9A%E9%85%8Dfallback/">SpringCloud Note18.Hystrix服务降级通配fallback</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2018/02/24/%E6%97%A0%E9%97%AE%E8%A5%BF%E4%B8%9C/">
+        <a href="/2020/01/20/SpringCloud%20Note18.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E9%80%9A%E9%85%8Dfallback/">
           
           
             
           
-          ​    大概一个月前去看的《无问西东》，电影中梅贻琦校长关于“真实”一词的说法令我思索至今：​    “你看到什么，听到什么，做什么，和谁在一起，如果有一种从心灵深处满溢出来的，不懊悔也不羞耻的，平和与喜悦，那就是真实。”​    从看完电影回来，我就一直对这句话不能释怀，现在的生活真实吗？不真实！甚至充满了懊悔并无限怀念以前的校园时光，对自己现在所做的工作没有热爱没有激情，有的只是机械的重复，
+          1.在@FeignClient注解接口类的注解上加上fallback属性，指明fallback实现类
+2.编写fallback实现类，对所实现的接口类里的每一个方法配置fallback方法
+12345678910@Component@FeignClient(value = &quot;CLOUD-HYSTRIX-PAYMENT-SERVICE&quot;,fallback = FeignHystr
         </a>
       </p>
 
@@ -661,8 +628,8 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2018-02-24 19:06" pubdate>
-              2018-02-24
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
             </time>
           </div>
         
@@ -670,9 +637,9 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">程序员的自我修养</a>
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
             
-              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/%E9%9A%8F%E7%AC%94/">随笔</a>
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -680,7 +647,146 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+              <a href="/tags/JAVA/">JAVA</a>
+            
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/01/20/SpringCloud%20Note17.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E5%85%A8%E5%B1%80fallback/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note17.Hystrix服务降级全局fallback">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/01/20/SpringCloud%20Note17.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E5%85%A8%E5%B1%80fallback/">SpringCloud Note17.Hystrix服务降级全局fallback</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/01/20/SpringCloud%20Note17.Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E5%85%A8%E5%B1%80fallback/">
+          
+          
+            
+          
+          要点
+1.controller层@DefaultProperties注解
+2.全局fallback方法
+3.
+12配置了全局fallback时，只加@HystrixCommand注解，没有指定fallback方法时，会调用全局fallback方法@HystrixCommand注解里指定了具体fallback方法时，会调用指定的fallback方法
+
+4.
+1@HystrixCommand//配置了
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
+            
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JAVA/">JAVA</a>
+            
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/01/20/SpringCloud%20Note16.Hystrix/" target="_self">
+          <img src="https://i.loli.net/2021/02/03/neHBmgCM8rzwFAj.jpg" srcset="/img/loading.gif" alt="SpringCloud Note16.Hystrix">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/01/20/SpringCloud%20Note16.Hystrix/">SpringCloud Note16.Hystrix</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/01/20/SpringCloud%20Note16.Hystrix/">
+          
+          
+            
+          
+          Hystrix用处服务降级fallback服务器忙，请稍后再试，不让客户端等待并立刻返回一个友好提示
+哪些情况会出现服务降级
+
+程序运行异常
+
+超时
+
+服务熔断触发服务降级
+
+线程池/信号量打满
+
+
+服务熔断break类似保险丝，达到最大服务访问量后，直接拒绝访问，拉闸限电，然后调用服务降级的方法返回友好提示
+降级-&gt;熔断-&gt;恢复服务链路
+服务限流limit秒杀等高并发操作，严禁一窝蜂
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-01-20 19:43" pubdate>
+              2020-01-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/">从零开始的编程之路</a>
+            
+              <a href="/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E8%B7%AF/SPRING-CLOUD/">SPRING CLOUD</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JAVA/">JAVA</a>
+            
+              <a href="/tags/SPRING-CLOUD/">SPRING CLOUD</a>
             
           </div>
         
@@ -692,7 +798,7 @@ Tomcat安装包（apache-tomcat-9.0.31.tar.gz）
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
