@@ -6,8 +6,8 @@
 menu:
   home: / || 首页
   archives: /archives/ || 归档
-  tags: /tags/ || 标签
   categories: /categories/ || 分类
+  tags: /tags/ || 标签
   galleries: /galleries/ || 摄影
   about: /about/ || 关于
 
@@ -77,7 +77,7 @@ navbar:
   back_home: true
 
 # Copyright
-copyright: <p>Copyright© 2017 - 2023 <a target="_blank" href="https://hexo.io">Heart</a>  |  Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p>
+copyright: <p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p>
 
 # Social
 social:
@@ -100,7 +100,7 @@ fab:
 ## npm install hexo-generator-searchdb --save
 search:
   enable: true
-  path: /search.xml  # 索引生成路径（需要设置绝对路径，否则二级页面读不到）
+  path: search.xml  # 索引生成路径（需要设置绝对路径，否则二级页面读不到）
   field: post  # post page all
   format: html  # 只支持 html 类型
   content: true  # 是否包含正文内容
@@ -155,8 +155,8 @@ toc:
 # Donate
 donate:
   enable: true
-  alipay: http://110.40.192.87/static/image/2023/2/12/alipay.jpeg
-  wechat: http://110.40.192.87/static/image/2023/2/12/wechat.jpeg
+  alipay: /images/theme/alipay.jpeg
+  wechat: /images/theme/wechat.jpeg
 
 # Copyright
 post_copyright:
@@ -257,7 +257,7 @@ pjax: false
 highlight:
   enable: true
   style: # https://highlightjs.org/static/demo/
-    light: Xcode
+    light: Solar Flare Light
     dark: Solarized Dark
 
 # SEO
