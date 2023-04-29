@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mac mini M2(macOS Ventura 13.3.1)安装Homebrew - Your`s Heart</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="1.查看是否已安装了homebrew打开终端，执行命令...">
+  <meta name="author" content="heart">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solar-flare-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.jpeg',
+        wechat: '/images/theme/wechat.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'simple'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Mac mini M2(macOS Ventura 13.3.1)安装Homebrew</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Mac mini M2(macOS Ventura 13.3.1)安装Homebrew</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>四月 18, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4158</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h3 id="1-查看是否已安装了homebrew"><a href="#1-查看是否已安装了homebrew" class="headerlink" title="1.查看是否已安装了homebrew"></a>1.查看是否已安装了homebrew</h3><p>打开终端，执行命令 brew -v<br>显示zsh: command not found: brew<br>说明还未安装</p>
+<h3 id="2-安装homebrew"><a href="#2-安装homebrew" class="headerlink" title="2.安装homebrew"></a>2.安装homebrew</h3><p>homebrew的Github主页 <a target="_blank" rel="noopener" href="https://github.com/Homebrew/brew">https://github.com/Homebrew/brew</a><br>homebrew的官方主页 <a target="_blank" rel="noopener" href="https://brew.sh/index_zh-cn">https://brew.sh/index_zh-cn</a></p>
+<p>按照homebrew官方主页中给的命令进行安装：<br>在终端中执行命令 &#x2F;bin&#x2F;bash -c “$(curl -fsSL <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)”<br>但是打印了错误：<br>curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 210 ms: Couldn’t connect to server<br>意思是连接不上raw.githubusercontent.com服务器</p>
+<p>改用科大源安装Homebrew<br>首先在命令行运行如下几条命令设置环境变量：<br>export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“<br>export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“<br>export HOMEBREW_BOTTLE_DOMAIN&#x3D;”<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/homebrew-bottles">https://mirrors.ustc.edu.cn/homebrew-bottles</a>“<br>export HOMEBREW_API_DOMAIN&#x3D;”<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/homebrew-bottles/api">https://mirrors.ustc.edu.cn/homebrew-bottles/api</a>“<br>注意 export命令是一次性设置环境变量</p>
+<p>之后在命令行运行 Homebrew 安装脚本：<br>&#x2F;bin&#x2F;bash -c “$(curl -fsSL <a target="_blank" rel="noopener" href="https://github.com/Homebrew/install/raw/HEAD/install.sh">https://github.com/Homebrew/install/raw/HEAD/install.sh</a>)”<br>但是又失败了<br>打印错误：<br>curl: (56) Recv failure: Operation timed out<br>操作超时，应该还是github的问题，国内网不太好连</p>
+<p>然后看到科大源镜像使用帮助上写到：<br>初次安装 Homebrew &#x2F; Linuxbrew 时，如果无法下载安装脚本， 可以使用我们每日同步的安装脚本文件。<br>&#x2F;bin&#x2F;bash -c “$(curl -fsSL <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/misc/brew-install.sh">https://mirrors.ustc.edu.cn/misc/brew-install.sh</a>)”</p>
+<p>在终端中执行这个命令<br>很快有了反应，让输入密码<br>输入开机密码，回车继续<br>然后又出现一行Press RETURN&#x2F;ENTER to continue or any other key to abort<br>我们继续ENTER<br>然后终端会继续打印下载过程，等待…<br>安装顺利完成！</p>
+<p>3.环境变量配置</p>
+<p>安装完成时终端上打印了以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line">Warning: /opt/homebrew/bin is not <span class="keyword">in</span> your PATH.</span><br><span class="line">  Instructions on how to configure your shell <span class="keyword">for</span> Homebrew</span><br><span class="line">  can be found <span class="keyword">in</span> the <span class="string">&#x27;Next steps&#x27;</span> section below.</span><br><span class="line">==&gt; Installation successful!</span><br><span class="line"></span><br><span class="line">==&gt; Homebrew has enabled anonymous aggregate formulae and cask analytics.</span><br><span class="line">Read the analytics documentation (and how to opt-out) here:</span><br><span class="line">  https://docs.brew.sh/Analytics</span><br><span class="line">No analytics data has been sent yet (nor will any be during this install run).</span><br><span class="line"></span><br><span class="line">==&gt; Homebrew is run entirely by unpaid volunteers. Please consider donating:</span><br><span class="line">  https://github.com/Homebrew/brew<span class="comment">#donations</span></span><br><span class="line"></span><br><span class="line">==&gt; Next steps:</span><br><span class="line">- Run these two commands <span class="keyword">in</span> your terminal to add Homebrew to your PATH:</span><br><span class="line">    (<span class="built_in">echo</span>; <span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27;</span>) &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(/opt/homebrew/bin/brew shellenv)</span>&quot;</span></span><br><span class="line">- Run these commands <span class="keyword">in</span> your terminal to add the non-default Git remotes <span class="keyword">for</span> Homebrew/brew and Homebrew/homebrew-core:</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;# Set PATH, MANPATH, etc., for Homebrew.&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BREW_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/brew.git&quot;&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_CORE_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">export</span> HOMEBREW_BREW_GIT_REMOTE=<span class="string">&quot;https://mirrors.ustc.edu.cn/brew.git&quot;</span></span><br><span class="line">    <span class="built_in">export</span> HOMEBREW_CORE_GIT_REMOTE=<span class="string">&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;</span></span><br><span class="line">- Run brew <span class="built_in">help</span> to get started</span><br><span class="line">- Further documentation:</span><br><span class="line">    https://docs.brew.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<p>意思应该是让我配置环境变量<br>按照指示<br>在终端依次执行下面两条命令<br>(echo; echo ‘eval “$(&#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;brew shellenv)”‘) &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>eval “$(&#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;brew shellenv)”<br>然后执行brew -v<br>成功打印出版本号 Homebrew 4.0.13</p>
+<p>继续按照指示配置环境变量<br>echo ‘# Set PATH, MANPATH, etc., for Homebrew.’ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>echo ‘export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“‘ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>echo ‘export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“‘ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“<br>export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“</p>
+<p>然后执行brew help成功打印出brew帮助信息</p>
+<p>说明homebrew安装成功完成！</p>
+<blockquote>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://www.funkyspacemonkey.com/how-to-install-homebrew-on-m1-macs-running-macos-monterey">https://www.funkyspacemonkey.com/how-to-install-homebrew-on-m1-macs-running-macos-monterey</a><br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1853162">https://cloud.tencent.com/developer/article/1853162</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/607620531">https://zhuanlan.zhihu.com/p/607620531</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4d051b10af7e">https://www.jianshu.com/p/4d051b10af7e</a><br>科大镜像源相关<br><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/help/index.html#">https://mirrors.ustc.edu.cn/help/index.html#</a><br><a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/help/brew.git.html">https://mirrors.ustc.edu.cn/help/brew.git.html</a></p>
+</blockquote>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>heart</li>
+    <li><strong>本文链接：</strong><a href="https://heart14.github.io/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Homebrew/index.html" title="https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;04&#x2F;18&#x2F;Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Homebrew&#x2F;index.html">https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;04&#x2F;18&#x2F;Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Homebrew&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.jpeg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-Silicon/" rel="tag">Apple Silicon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Homebrew/" rel="tag">Homebrew</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/M2/" rel="tag">M2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-mini/" rel="tag">Mac mini</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85jdk8/"><i class="iconfont iconleft"></i>Mac mini M2(macOS Ventura 13.3.1)安装jdk8</a>
+    <a href="/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Git/">Mac mini M2(macOS Ventura 13.3.1)安装Git<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录</h3>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%85%E4%BA%86homebrew"><span class="toc-text">1.查看是否已安装了homebrew</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85homebrew"><span class="toc-text">2.安装homebrew</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=972888499 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/heart14 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:lwf14@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#0080FF" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    <div class="scrollbar j-scrollbar">
+  <div class="scrollbar-current j-scrollbar-current"></div>
+</div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

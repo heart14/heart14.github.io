@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>打开使用高版本Java项目时报错：无效的目标发行版17 - Your`s Heart</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="不同项目使用不同jdk版本的配置。
+问题描述1.本机安...">
+  <meta name="author" content="heart">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solar-flare-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.jpeg',
+        wechat: '/images/theme/wechat.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'simple'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">打开使用高版本Java项目时报错：无效的目标发行版17</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">打开使用高版本Java项目时报错：无效的目标发行版17</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>二月 20, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1078</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <p>不同项目使用不同jdk版本的配置。</p>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>1.本机安装的jdk版本为jdk1.8.0_241（已配置环境变量）</p>
+<p>2.新项目A的pom.xml中配置了&lt;java.version&gt;17&lt;&#x2F;java.version&gt;属性，说明它使用的是jdk17版本</p>
+<p>3.由于其它项目引入A项目依赖，所以要对A项目先进行 maven clean install</p>
+<p>在点击maven install的时候报错：无效的目标发行版17</p>
+<h4 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h4><p>本机安装的jdk版本与项目使用的jdk版本不一致</p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>由于需要在不更改项目java版本的情况下成功运行，所以网上一些教程里使用的“修改项目中的Java版本”并不适用我的情况</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>本机安装的jdk版本与项目使用的jdk版本不一致，那么我需要重新下载一个jdk17并安装</p>
+<p>但两个版本的jdk在同一台机器上不能同时安装生效（因为不能同时配置两个目录不相同的JAVA_HOME环境变量）</p>
+<p>jdk1.8是使用msi installer方式安装的，所以jdk17选择下载压缩文件，直接进行解压安装</p>
+<p>然后不要配置jdk17的环境变量，保持本机环境生效的依然是jdk1.8</p>
+<p>在使用java17的项目中进行手动引入jdk并选择使用</p>
+<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><h5 id="下载jdk17"><a href="#下载jdk17" class="headerlink" title="下载jdk17"></a>下载jdk17</h5><p><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/">Java Downloads | Oracle</a></p>
+<p>在官方下载页面，选择windows - x64 Compressed Archive 下载压缩文件</p>
+<h5 id="解压jdk17"><a href="#解压jdk17" class="headerlink" title="解压jdk17"></a>解压jdk17</h5><h5 id="手动添加jdk"><a href="#手动添加jdk" class="headerlink" title="手动添加jdk"></a>手动添加jdk</h5><p>Idea打开项目，依次选择 File - Project Structure - Platform Settings - 加号，然后在弹窗里选择刚才解压目录，点击确定</p>
+<p>点击Apply</p>
+<h5 id="修改项目SDK"><a href="#修改项目SDK" class="headerlink" title="修改项目SDK"></a>修改项目SDK</h5><p>在File - Project Structure - Project Settings - Project 菜单中修改SDK选项配置为刚才添加的jdk17，同时Language level选项值为SDK default</p>
+<h5 id="查看其它响应配置"><a href="#查看其它响应配置" class="headerlink" title="查看其它响应配置"></a>查看其它响应配置</h5><p>上一步修改完成后，在File - Project Structure - Project Settings - Modules 里面的SDK版本应该也随之变为jdk17</p>
+<h5 id="完成修改"><a href="#完成修改" class="headerlink" title="完成修改"></a>完成修改</h5><p>点击OK</p>
+<h5 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h5><p>此时，再次执行maven clean install命令，可以成功执行</p>
+<p>同时，cmd中查看Java -version可看到环境变量中的jdk版本依然为jdk1.8.0_241，也不会影响其它项目的jdk版本。（打开其它项目时最好看一下配置是否是自己原先的配置）</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>heart</li>
+    <li><strong>本文链接：</strong><a href="https://heart14.github.io/2023/02/20/%E6%89%93%E5%BC%80%E4%BD%BF%E7%94%A8%E9%AB%98%E7%89%88%E6%9C%ACJava%E9%A1%B9%E7%9B%AE%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9A%E6%97%A0%E6%95%88%E7%9A%84%E7%9B%AE%E6%A0%87%E5%8F%91%E8%A1%8C%E7%89%8817/index.html" title="https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;02&#x2F;20&#x2F;%E6%89%93%E5%BC%80%E4%BD%BF%E7%94%A8%E9%AB%98%E7%89%88%E6%9C%ACJava%E9%A1%B9%E7%9B%AE%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9A%E6%97%A0%E6%95%88%E7%9A%84%E7%9B%AE%E6%A0%87%E5%8F%91%E8%A1%8C%E7%89%8817&#x2F;index.html">https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;02&#x2F;20&#x2F;%E6%89%93%E5%BC%80%E4%BD%BF%E7%94%A8%E9%AB%98%E7%89%88%E6%9C%ACJava%E9%A1%B9%E7%9B%AE%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9A%E6%97%A0%E6%95%88%E7%9A%84%E7%9B%AE%E6%A0%87%E5%8F%91%E8%A1%8C%E7%89%8817&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.jpeg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java17/" rel="tag">Java17</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/02/22/%E5%90%8C%E6%97%B6%E8%AE%BE%E7%BD%AE%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%B8%AA%E4%BA%BA%E7%9A%84Git%E7%8E%AF%E5%A2%83%E4%B8%8EMaven%E9%85%8D%E7%BD%AE/"><i class="iconfont iconleft"></i>同时设置公司与个人的Git环境与Maven配置</a>
+    <a href="/2023/02/13/%E5%90%8C%E4%BA%8B%E7%AC%91%E8%B0%88/">同事笑谈<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录</h3>
+    
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=972888499 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/heart14 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:lwf14@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#0080FF" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    <div class="scrollbar j-scrollbar">
+  <div class="scrollbar-current j-scrollbar-current"></div>
+</div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>同时设置公司与个人的Git环境与Maven配置 - Your`s Heart</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="需求说明假如我的笔记本电脑，要在公司作为办公开发电脑，...">
+  <meta name="author" content="heart">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solar-flare-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.jpeg',
+        wechat: '/images/theme/wechat.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'simple'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">同时设置公司与个人的Git环境与Maven配置</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">同时设置公司与个人的Git环境与Maven配置</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>二月 22, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2109</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h2 id="需求说明"><a href="#需求说明" class="headerlink" title="需求说明"></a>需求说明</h2><p>假如我的笔记本电脑，要在公司作为办公开发电脑，连接公司内网、内网Maven依赖仓库与内网Gitlab代码仓库，开发公司项目。同时要兼顾下班把笔记本带回家，连接阿里云Maven仓库和Github仓库，开发自己的项目。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>首先电脑上需要先安装完git。</p>
+<p>在公司，通过https方式，进行公司项目代码从gitlab仓库上传下载，不需要配置git。第一次clone的时候弹出输入账号密码的登录框，登录后记住密码，之后即可在公司pull push 代码了。</p>
+<p>在家里，通过ssh方式，进行个人项目代码从GitHub仓库上传下载。需要配置ssh key。</p>
+<p>生成shh key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后将生成的rsa.pub文件内容复制粘贴到github个人设置中的settings–&gt;ssh key，即可进行代码上传下载。</p>
+<h4 id="git提交记录中的用户信息问题"><a href="#git提交记录中的用户信息问题" class="headerlink" title="git提交记录中的用户信息问题"></a>git提交记录中的用户信息问题</h4><p>公司gitlab账号是我的公司邮箱<a href="mailto:&#119;&#x66;&#108;&#105;&#64;&#99;&#104;&#x69;&#110;&#97;&#x75;&#109;&#115;&#46;&#x63;&#x6f;&#109;">&#119;&#x66;&#108;&#105;&#64;&#99;&#104;&#x69;&#110;&#97;&#x75;&#109;&#115;&#46;&#x63;&#x6f;&#109;</a>，GitHub是我的个人邮箱<a href="mailto:&#108;&#119;&#102;&#x31;&#x34;&#x40;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#108;&#119;&#102;&#x31;&#x34;&#x40;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;</a>。</p>
+<p>由于主要是在公司使用，所以在git通用配置上，设置用户名和邮箱为公司：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;wfli&quot;</span>  </span><br><span class="line">git config --global user.email <span class="string">&quot;wfli@chinaums.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样在公司，什么都不用管，直接上传下载即可，代码提交记录上显示的就是公司里的个人信息了。</p>
+<p>然后，在家里的时候，如果也要提交代码，GitHub上显示的提交记录，也是公司里的个人信息(<a href="mailto:&#x77;&#x66;&#x6c;&#105;&#x40;&#x63;&#x68;&#x69;&#x6e;&#x61;&#x75;&#x6d;&#115;&#46;&#x63;&#x6f;&#109;">&#x77;&#x66;&#x6c;&#105;&#x40;&#x63;&#x68;&#x69;&#x6e;&#x61;&#x75;&#x6d;&#115;&#46;&#x63;&#x6f;&#109;</a>)，这样其实也没问题，都是自己。但是如果想让它显示为GitHub的注册用户名和邮箱的话，可以在每个从GitHub下载下来的仓库目录下，单独设置user.name和email属性：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">&quot;heart14&quot;</span>  </span><br><span class="line">git config --<span class="built_in">local</span> user.email <span class="string">&quot;lwf14@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个–local参数使得这个配置只在这个目录生效，所以不会影响公司项目的提交。</p>
+<p>这样配置之后，即可实现，公司项目通过HTTPS方式，以wfli&#x2F;<a href="mailto:&#x77;&#x66;&#x6c;&#105;&#x40;&#x63;&#x68;&#105;&#x6e;&#x61;&#x75;&#109;&#115;&#x2e;&#x63;&#x6f;&#109;">&#x77;&#x66;&#x6c;&#105;&#x40;&#x63;&#x68;&#105;&#x6e;&#x61;&#x75;&#109;&#115;&#x2e;&#x63;&#x6f;&#109;</a>用户提交代码，个人项目通过SSH方式，以heart14&#x2F;<a href="mailto:&#x6c;&#x77;&#x66;&#49;&#52;&#x40;&#x71;&#x71;&#46;&#99;&#111;&#109;">&#x6c;&#x77;&#x66;&#49;&#52;&#x40;&#x71;&#x71;&#46;&#99;&#111;&#109;</a>用户提交代码。</p>
+<blockquote>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yanglang/p/9563496.html">https://www.cnblogs.com/yanglang/p/9563496.html</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hezhi/p/10317642.html">https://www.cnblogs.com/hezhi/p/10317642.html</a></p>
+</blockquote>
+<h4 id="maven依赖仓库问题"><a href="#maven依赖仓库问题" class="headerlink" title="maven依赖仓库问题"></a>maven依赖仓库问题</h4><h5 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h5><p>还有一个情况就是，</p>
+<p>在公司用的是公司搭建的私域仓库，在家用的是阿里云公共仓库。</p>
+<p>在公司连不了外网，用不了阿里云仓库，在家连不上内网，用不了公司仓库。</p>
+<p>难道每次都要去修改maven&#x2F;conf&#x2F;settings.xml文件吗？</p>
+<p>其实也不用。可以配置一下maven&#x2F;conf&#x2F;settings.xml，使得在不同环境，不同项目，可以成功下载自己所需的依赖。</p>
+<h5 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h5><p>在maven&#x2F;conf&#x2F;settings.xml的profile节点进行配置maven仓库镜像，这里可以配置多个仓库，他们会同时生效，也可以在Intellj idea上的maven插件上进行控制具体哪个仓库生效。</p>
+<p>这里配置多个仓库后，会依次检索每个生效的仓库，如果连接失败或者没找到所需的依赖包，会去下一个生效的仓库查找。这样公司项目可以从公司maven仓库下载依赖，个人项目也可以从阿里云仓库下载依赖了。</p>
+<p>而以往在mirrors里面配置，mirror相当于是对仓库的一个备份。即便配置了多个mirror，也只有在第一个仓库连接失败的时候才会进行连接下一个仓库，否则，只要连接成功，即使在仓库里没有找到依赖，也不会去下一个仓库找。这样就不能满足我们的需求了。</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>heart</li>
+    <li><strong>本文链接：</strong><a href="https://heart14.github.io/2023/02/22/%E5%90%8C%E6%97%B6%E8%AE%BE%E7%BD%AE%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%B8%AA%E4%BA%BA%E7%9A%84Git%E7%8E%AF%E5%A2%83%E4%B8%8EMaven%E9%85%8D%E7%BD%AE/index.html" title="https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;02&#x2F;22&#x2F;%E5%90%8C%E6%97%B6%E8%AE%BE%E7%BD%AE%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%B8%AA%E4%BA%BA%E7%9A%84Git%E7%8E%AF%E5%A2%83%E4%B8%8EMaven%E9%85%8D%E7%BD%AE&#x2F;index.html">https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;02&#x2F;22&#x2F;%E5%90%8C%E6%97%B6%E8%AE%BE%E7%BD%AE%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%B8%AA%E4%BA%BA%E7%9A%84Git%E7%8E%AF%E5%A2%83%E4%B8%8EMaven%E9%85%8D%E7%BD%AE&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.jpeg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitLab/" rel="tag">GitLab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/03/24/Base64%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/"><i class="iconfont iconleft"></i>Base64从入门到入门</a>
+    <a href="/2023/02/20/%E6%89%93%E5%BC%80%E4%BD%BF%E7%94%A8%E9%AB%98%E7%89%88%E6%9C%ACJava%E9%A1%B9%E7%9B%AE%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9A%E6%97%A0%E6%95%88%E7%9A%84%E7%9B%AE%E6%A0%87%E5%8F%91%E8%A1%8C%E7%89%8817/">打开使用高版本Java项目时报错：无效的目标发行版17<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录</h3>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E"><span class="toc-text">需求说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">解决方案</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=972888499 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/heart14 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:lwf14@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#0080FF" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    <div class="scrollbar j-scrollbar">
+  <div class="scrollbar-current j-scrollbar-current"></div>
+</div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

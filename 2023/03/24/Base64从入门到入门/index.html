@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Base64从入门到入门 - Your`s Heart</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="位、字节、字定义位（bits，比特）、字节（Bytes...">
+  <meta name="author" content="heart">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solar-flare-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.jpeg',
+        wechat: '/images/theme/wechat.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'simple'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Base64从入门到入门</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Base64从入门到入门</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>三月 24, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4747</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h2 id="位、字节、字"><a href="#位、字节、字" class="headerlink" title="位、字节、字"></a>位、字节、字</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>位（bits，比特）、字节（Bytes）、字（words）是计算机数据存储的单位。位是最小的存储单位，每一个位存储一个1位的二进制码，一个字节由8位组成。而字通常为16、32或64个位组成。</p>
+<ul>
+<li><p>位：二进制码 0或者1</p>
+</li>
+<li><p>字节：字节是由八个位组成的一个单元，也就是8个bit组成1个Byte</p>
+</li>
+<li><p>字符：字（Word）代表计算机处理指令或数据的二进制数位数，是计算机进行数据存储和数据处理的运算的单位。比如中文汉字、英文字母、阿拉伯数字等等。它是一个运算单位，但不是基础单位，计算机中最基本的单位还是位。</p>
+</li>
+</ul>
+<blockquote>
+<p>对于32位计算机与64位计算机，字的大小往往不同。<br>32位计算机：1字&#x3D;32位&#x3D;4字节，64位计算机：1字&#x3D;64位&#x3D;8字节。</p>
+</blockquote>
+<h5 id="扩展："><a href="#扩展：" class="headerlink" title="扩展："></a>扩展：</h5><p>这里的32位与64位又是什么意思呢？它指的是计算机芯片一次处理的指令长度。</p>
+<p>计算机组成原理可以得知冯诺依曼计算机结构：</p>
+<p>①有运算器、控制器、存储器、输入、输出五大部分组成。</p>
+<p>②指令和数据用二进制表示，两者形式上没有差别。</p>
+<p>③指令和数据存放在存储器中，按地址访问。</p>
+<p>④指令由操作码和地址码组成，操作码指定操作性质，地址码指定操作数地址。</p>
+<p>⑤采用“存储程序控制”方式进行工作。</p>
+<p>所以，这里的32位与64位指的就是CPU运算器一次处理的指令长度为32位或者64位二进制码</p>
+<p>那么在第1步的时候又会出现一些疑问，比如从各种不同的字符怎么得到它的二进制呢？</p>
+<p>这里就要说到字符集、字符编码方式</p>
+<h2 id="字符集、字符编码"><a href="#字符集、字符编码" class="headerlink" title="字符集、字符编码"></a>字符集、字符编码</h2><h4 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h4><p>什么是字符集，就是字符的集合。那为什么要有字符集，为了使用计算机。</p>
+<p>我们知道最最最开始的计算机是通过纸带打孔作为计算机的输入，但后来我们要用键盘打字啦，可是你计算机处理的是0101010101这样的二进制码，我键盘敲出来的是abcd这样的字母，这怎么办呢，所以为了能够使用计算机，就要有一套字符集。</p>
+<p>比如最开始的ASCII字符集，中文叫美国信息交换标准代码，英文叫American Standard Code for Information Interchange，缩写就是ASCII。</p>
+<p>它是怎么表示的呢，它使用一个字节也就是8位二进制数来表示一个字符，其中前七位表示具体，最高位第八位固定0，那从00000000 - 01111111对应十进制也就是0 - 127一共包含了128个字符，编码从0到127，包含了所有的大写和小写字母，数字0 到9、标点符号，以及在美式英语中使用的特殊控制字符。这样，二进制跟我们实际使用的字符就对应起来了。</p>
+<p>其中：<br>0～31及127(共33个)是控制字符或通信专用字符（其余为可显示字符），如控制符：LF(换行)、CR(回车)、FF(换页)、DEL(删除)、BS(退格)等等，通信专用字符：SOH（文头）、EOT（文尾）、ACK（确认）等</p>
+<p>32-47是标点符号 </p>
+<p>48-57是阿拉伯数字0-9</p>
+<p>58-64是标点符号 </p>
+<p>65-90是大写字符A-Z</p>
+<p>91-96是标点符号</p>
+<p>97-122是小写字母a-z</p>
+<p>123-126是标点符号</p>
+<p>（具体可参考ASCII表）</p>
+<p>在英语体系中，这些字符就已经够用了，但是对于欧洲来说，还不够，欧洲语言体系众多法语希伯来语什么αβ还有字母上面带音标的é，所以他们又在ASCII基础上，把最高位那个0给利用起来了，这样从00000000 - 11111111 对应十进制也就是 0 - 255，一共256个字符。</p>
+<p>但是对应亚洲比如中文，这256个字符又不够了，中文汉字那么多，常见的汉字就有三千左右，完整的更是有上万，还分简体繁体。所以原中国国家标准总局1981年5月1日发布实施了一个GB2312字符集，然后后来又经过几版更新迭代，比如GBK GB18030-2000 GB18030-2005。但这只解决了中文语言环境使用计算机的问题，当跨语言跨平台的时候，不同字符集之间又会出现“语言不通”的问题。</p>
+<p>于是，Unicode出现了。Unicode又称万国码，中文叫通用多八位编码字符集，英文叫Universal Multiple-Octet Coded Character Set。是由一个名为 Unicode 学术学会(Unicode Consortium)的机构制订的字符编码系统，支持现今世界各种不同语言的书面文本的交换、处理及显示。该编码于1990年开始研发，1992年公布1.0.1，最新版本是2020年3月Unicode 13.0.0。</p>
+<p>它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。</p>
+<p>Unicode 标准始终使用十六进制数字，从0到10ffff(十六进制)范围内共1114112个码位的代码空间，而且在书写时在前面加上前缀“U+”，例如字母“A”的编码为 0x0041 和字符“€”的编码为 0x20AC，所以“A”、“€”的编码书写为“U+0041”、“U+20AC”。</p>
+<blockquote>
+<p>0x代表十六进制数字</p>
+<p>u+和\u代表unicode统一码</p>
+<p>\x代表utf-8编码</p>
+</blockquote>
+<h4 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h4><p>字符集只是规定了有哪些字符，而字符编码才是真正使用字符集的过程，就好比看一些近代历史背景的电视剧时，比如抗战、内战时期，传电报都是加密后的信息，收到电报要对照特定的密码本来破译信息。就相当于这里的字符集和字符编码的概念。</p>
+<p>在 Unicode 出现之前，所有的字符集都是和具体编码方案绑定在一起的（即字符集≈编码方式），意思就是ASCII字符集也对应了一套固定的ASCII编码，比如查看ASCII码表，A就是65就是0100 0001。</p>
+<p>但是Unicode之后，出现了不同的编码方式也就是不同的UTF。UTF是 Unicode Tranformation Format，也就是Unicode 的编码，包含UTF-8 UTF-16 UTF-32，没错就是我们现在最常见的utf-8。</p>
+<p>说完了 位 字节 字</p>
+<p>说完了 字符集 字符编码</p>
+<p>要说回到Base64上了</p>
+<h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>Base64就是一种基于64个可打印字符来表示二进制数据的方法。</p>
+<p>Base64编码是从二进制到字符的过程。</p>
+<p>可用于在HTTP环境下传递较长的标识信息。采用Base64编码具有不可读性，需要解码后才能阅读。</p>
+<p>为什么是64，而不是Base32 Base128？</p>
+<p>这个64是怎么来的，第一是根据转换规则中，取6位二进制为一组，2^6&#x3D;64，第二，当初制定标准的时候，标准的Base64协议规定了一个索引表，选用了 A-Z、a-z、0-9、+、&#x2F;这 64个可打印字符，所以称之为Base64。</p>
+<p>那我们平常还可能在Base64的编码结果中看到&#x3D;号是为什么呢？</p>
+<p>这个&#x3D;没有意义，是为了进行填充字符而出现。</p>
+<p>上面说到，Base64编码是从二进制到字符的过程</p>
+<h5 id="具体转换步骤："><a href="#具体转换步骤：" class="headerlink" title="具体转换步骤："></a>具体转换步骤：</h5><p>第1步，先要拿到待转换字符串的字节码，也就是用二进制01格式表示的数据</p>
+<p>第2步，将待转换的字符串每三个字节分为一组，每个字节占8bit，那么共有24个二进制位。</p>
+<p>第3步，将上面的24个二进制位每6个一组，共分为4组。</p>
+<p>第4步，在每组前面添加两个0，每组由6个变为8个二进制位，总共32个二进制位，即四个字节。</p>
+<p>第5步，根据Base64编码对照表（见下图）获得对应的值。</p>
+<p>0      A      17      R  　34      i  　51　z<br>1      B      18      S  　35      j  　52　0<br>2      C      19      T  　36      k  　53　1<br>3      D      20      U  　37      l  　54　2<br>4      E       21      V  　38      m    55　3<br>5      F       22     W      39      n     56　4<br>6      G      23      X  　40      o  　57　5<br>7      H      24      Y  　41      p  　58　6<br>8      I        25      Z  　42      q  　59　7<br>9      J        26      a  　43      r  　 60　8<br>10   K        27      b  　44      s  　61　9<br>11   L        28      c  　45      t  　 62　+<br>12   M      29      d  　46      u  　63　 &#x2F;<br>13   N       30      e  　47      v<br>14   O       31      f  　48      w  　<br>15   P       32      g  　49      x<br>16   Q       33      h  　50      y</p>
+<p>用一个例子，对照这上面所说的步骤，来看下到底Base64怎么转的</p>
+<p>比如我们要把<strong>hello</strong>这个单词转成Base64</p>
+<p><strong>第一步</strong>：拿到字节码</p>
+<p>对照ASCII码表</p>
+<p><strong>h</strong>  104   0110 1000</p>
+<p><strong>e</strong>  101   0110 0101</p>
+<p><strong>l</strong>   108   0110 1100</p>
+<p><strong>l</strong>   108   0110 1100</p>
+<p><strong>o</strong>  111   0110 1111</p>
+<p><strong>第二步</strong>，字符串每三个字节分为一组，理想状态下每组一共24位，不足24位的先不管</p>
+<p>第一组  0110 1000    0110 0101    0110 1100</p>
+<p>第二组  0110 1100    0110 1111 </p>
+<p><strong>第三步</strong>，将24位，每6位一组，分为4组</p>
+<p>第一组    011010      000110      010101      101100</p>
+<p>第二组    011011      000110      1111 </p>
+<p>但是这里只有两个字节16位，不够分成4组了怎么办？</p>
+<p>这时常见的&#x3D;号就要出现了</p>
+<p>首先，对不足6位的组进行补足0，然后对完全没有的用&#x3D;号填充</p>
+<p>所以第二组应该是  011011      000110      111100      &#x3D;</p>
+<p><strong>第四步</strong>，在每小组前面补足0到8位</p>
+<p>第一组    00011010      00000110      00010101      00101100</p>
+<p>第二组    00011011      00000110      00111100      &#x3D;</p>
+<p><strong>第五步</strong>，根据8位二进制对照ASCII转成码值</p>
+<p>第一组    26      6      21      44</p>
+<p>第二组    27      6      60      &#x3D;</p>
+<p><strong>第六步</strong>，根据Base64编码对照索引表</p>
+<p>第一组    a      G      V      s</p>
+<p>第二组    b      G      8      &#x3D;</p>
+<p>最终得到 hello 的Base64编码结果  <strong>aGVsbG8&#x3D;</strong></p>
+<p>找一个在线转码工具比对一下     <a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/693/">https://c.runoob.com/front-end/693/</a></p>
+<p>结果一致</p>
+<p>到这里，我们就明白Base64是什么了。</p>
+<p>拓展：为什么jpg格式图片Base64完都是&#x2F;9j开头，<a target="_blank" rel="noopener" href="https://www.ngui.cc/el/775244.html?action=onClick">https://www.ngui.cc/el/775244.html?action=onClick</a></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>heart</li>
+    <li><strong>本文链接：</strong><a href="https://heart14.github.io/2023/03/24/Base64%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/index.html" title="https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;03&#x2F;24&#x2F;Base64%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8&#x2F;index.html">https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;03&#x2F;24&#x2F;Base64%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.jpeg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Base64/" rel="tag">Base64</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag">计算机基础</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Git/"><i class="iconfont iconleft"></i>Mac mini M2(macOS Ventura 13.3.1)安装Git</a>
+    <a href="/2023/02/22/%E5%90%8C%E6%97%B6%E8%AE%BE%E7%BD%AE%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%B8%AA%E4%BA%BA%E7%9A%84Git%E7%8E%AF%E5%A2%83%E4%B8%8EMaven%E9%85%8D%E7%BD%AE/">同时设置公司与个人的Git环境与Maven配置<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录</h3>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E3%80%81%E5%AD%97%E8%8A%82%E3%80%81%E5%AD%97"><span class="toc-text">位、字节、字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E3%80%81%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="toc-text">字符集、字符编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Base64"><span class="toc-text">Base64</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=972888499 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/heart14 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:lwf14@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#0080FF" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    <div class="scrollbar j-scrollbar">
+  <div class="scrollbar-current j-scrollbar-current"></div>
+</div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

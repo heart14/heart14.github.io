@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mac mini M2(macOS Ventura 13.3.1)安装Node.js - Your`s Heart</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="1.查看是否已安装Node.jswhere noden...">
+  <meta name="author" content="heart">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solar-flare-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.jpeg',
+        wechat: '/images/theme/wechat.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'simple'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Mac mini M2(macOS Ventura 13.3.1)安装Node.js</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Mac mini M2(macOS Ventura 13.3.1)安装Node.js</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>四月 18, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4042</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h3 id="1-查看是否已安装Node-js"><a href="#1-查看是否已安装Node-js" class="headerlink" title="1.查看是否已安装Node.js"></a>1.查看是否已安装Node.js</h3><p>where node<br>node -v<br>两个命令分别返回<br>node not found<br>zsh: command not found: node<br>应该是没有安装过node的，而且我这新电脑</p>
+<h3 id="2-关于node-js和nvm"><a href="#2-关于node-js和nvm" class="headerlink" title="2.关于node.js和nvm"></a>2.关于node.js和nvm</h3><p>node.js<br>nvm是node的版本管理工具，它可以便捷的下载更新管理node的版本，所以安装这个就好了，使用它来下载安装node</p>
+<h3 id="3-安装nvm"><a href="#3-安装nvm" class="headerlink" title="3.安装nvm"></a>3.安装nvm</h3><p>nvm官方Github页面 <a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a><br>根据Readme里面的操作说明，使用下面的命令来安装nvm<br>curl -o- <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh">https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh</a> | bash</p>
+<p>但是终端打印错误<br>curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 32 ms: Couldn’t connect to server<br>又不行<br>意思是网络连不上服务器</p>
+<p>通过修改hosts的方法解决这个问题<br>在<a target="_blank" rel="noopener" href="https://site.ip138.com/raw.Githubusercontent.com/%E6%9F%A5%E8%AF%A2ip">https://site.ip138.com/raw.Githubusercontent.com/查询ip</a><br>然后在终端执行sudo vim &#x2F;etc&#x2F;hosts命令编辑hosts文件<br>在末尾添加上<br>185.199.108.133 raw.githubusercontent.com<br>185.199.109.133 raw.githubusercontent.com<br>185.199.110.133 raw.githubusercontent.com<br>185.199.111.133 raw.githubusercontent.com<br>182.43.124.6 raw.githubusercontent.com<br>20.205.243.166 github.com<br>保存退出</p>
+<p>重新执行安装命令</p>
+<p>这次倒是下载成功了，但是紧接着又来了一个git clone的错误<br>&#x3D;&gt; Cloning into ‘&#x2F;Users&#x2F;liwenfei&#x2F;.nvm’…<br>fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm.git/">https://github.com/nvm-sh/nvm.git/</a>‘: HTTP&#x2F;2 stream 1 was not closed cleanly before end of the underlying stream<br>Failed to clone nvm repo. Please report this!</p>
+<p>网络不好，重试一次，依然报错<br>&#x3D;&gt; Cloning into ‘&#x2F;Users&#x2F;liwenfei&#x2F;.nvm’…<br>fatal: unable to access ‘<a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm.git/">https://github.com/nvm-sh/nvm.git/</a>‘: Recv failure: Operation timed out<br>Failed to clone nvm repo. Please report this!</p>
+<p>网络不好，继续重试</p>
+<p>……</p>
+<p>终于试成功了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">liwenfei@macli Documents % curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100 15916  100 15916    0     0    206      0  0:01:17  0:01:17 --:--:--  4483</span><br><span class="line">=&gt; Downloading nvm from git to <span class="string">&#x27;/Users/liwenfei/.nvm&#x27;</span></span><br><span class="line">=&gt; Cloning into <span class="string">&#x27;/Users/liwenfei/.nvm&#x27;</span>...</span><br><span class="line">remote: Enumerating objects: 359, <span class="keyword">done</span>.</span><br><span class="line">remote: Counting objects: 100% (359/359), <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (305/305), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 359 (delta 40), reused 169 (delta 28), pack-reused 0</span><br><span class="line">Receiving objects: 100% (359/359), 219.46 KiB | 881.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">Resolving deltas: 100% (40/40), <span class="keyword">done</span>.</span><br><span class="line">remote: Enumerating objects: 54, <span class="keyword">done</span>.</span><br><span class="line">remote: Counting objects: 100% (54/54), <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (28/28), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 28 (delta 26), reused 2 (delta 0), pack-reused 0</span><br><span class="line">Unpacking objects: 100% (28/28), 4.38 KiB | 204.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">From https://github.com/nvm-sh/nvm</span><br><span class="line"></span><br><span class="line"> * tag               v0.39.3    -&gt; FETCH_HEAD</span><br><span class="line">* (HEAD detached at FETCH_HEAD)</span><br><span class="line">  master</span><br><span class="line">  =&gt; Compressing and cleaning up git repository</span><br><span class="line"></span><br><span class="line">=&gt; Appending nvm <span class="built_in">source</span> string to /Users/liwenfei/.zshrc</span><br><span class="line">=&gt; Appending bash_completion <span class="built_in">source</span> string to /Users/liwenfei/.zshrc</span><br><span class="line">=&gt; Close and reopen your terminal to start using nvm or run the following to use it now:</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>验证安装</p>
+<p>要验证nvm是否已安装，请执行以下操作：</p>
+<blockquote>
+<p>command -v nvm</p>
+</blockquote>
+<p>如果安装成功，它应该输出nvm。请注意，which nvm不起作用，因为nvm是一个源shell函数，而不是可执行的二进制文件。<br>注意：在Linux上，在运行安装脚本后，如果您在键入command -v nvm后获得nvm: command not found或没有看到来自终端的反馈，只需关闭当前终端，打开新终端，然后再次尝试验证。</p>
+<p>如上面所说，在刚安装成功时，在终端执行command -v nvm命令，没有任何反应<br>退出终端重新打开终端再次执行command -v nvm命令，成功打印出nvm<br>说明已经安装成功</p>
+<p>4.使用nvm安装node.js<br>nvm ls-remote 命令查看所有可安装的node版本<br>nvm install node 命令进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">liwenfei@macli ~ % nvm install node</span><br><span class="line">Downloading and installing node v19.9.0...</span><br><span class="line">Downloading https://nodejs.org/dist/v19.9.0/node-v19.9.0-darwin-arm64.tar.xz...</span><br><span class="line"><span class="comment">######################################################################################################################################### 100.0%</span></span><br><span class="line">Computing checksum with shasum -a 256</span><br><span class="line">Checksums matched!</span><br><span class="line">Now using node v19.9.0 (npm v9.6.3)</span><br><span class="line">Creating default <span class="built_in">alias</span>: default -&gt; node (-&gt; v19.9.0)</span><br><span class="line">liwenfei@macli ~ % </span><br><span class="line">liwenfei@macli ~ % node -v</span><br><span class="line">v19.9.0</span><br></pre></td></tr></table></figure>
+
+<p>或者使用nvm install 16.20.0这样指定版本号的命令，来安装指定版本</p>
+<p>然后node -v成功输出node版本信息<br>安装完成！</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>heart</li>
+    <li><strong>本文链接：</strong><a href="https://heart14.github.io/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Node-js/index.html" title="https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;04&#x2F;18&#x2F;Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Node-js&#x2F;index.html">https:&#x2F;&#x2F;heart14.github.io&#x2F;2023&#x2F;04&#x2F;18&#x2F;Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Node-js&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.jpeg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apple-Silicon/" rel="tag">Apple Silicon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/M2/" rel="tag">M2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-mini/" rel="tag">Mac mini</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/" rel="tag">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/04/28/Spring-Boot%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"><i class="iconfont iconleft"></i>Spring Boot多环境配置文件</a>
+    <a href="/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Maven/">Mac mini M2(macOS Ventura 13.3.1)安装Maven<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录</h3>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E5%B7%B2%E5%AE%89%E8%A3%85Node-js"><span class="toc-text">1.查看是否已安装Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%B3%E4%BA%8Enode-js%E5%92%8Cnvm"><span class="toc-text">2.关于node.js和nvm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85nvm"><span class="toc-text">3.安装nvm</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=972888499 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://github.com/heart14 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:lwf14@qq.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#0080FF" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p><p>Copyright © 2017 - 2023 <a target="_blank" href="https://heart14.github.io">Heart </a>.All Rights Reserved</p><p><a target="_blank" href="https://beian.miit.gov.cn/">皖ICP备2022006057号</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    <div class="scrollbar j-scrollbar">
+  <div class="scrollbar-current j-scrollbar-current"></div>
+</div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
