@@ -152,3 +152,16 @@ v19.9.0
 
 然后node -v成功输出node版本信息
 安装完成！
+
+5.使用nvm切换node.js的版本
+nvm ls命令来查看本地已安装的node版本
+nvm ls-remote命令来查看远程所有node版本
+
+然后使用nvm install xx.xx.xx来安装指定版本的node
+在macOS上，安装完成后并不会立即生效，系统使用的依然是之前的版本
+
+使用nvm alias default xx.xx.xx 来切换系统使用的node版本
+
+然后再次查看版本node -v
+
+成功！
