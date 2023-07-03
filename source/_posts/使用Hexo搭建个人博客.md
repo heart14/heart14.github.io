@@ -32,6 +32,8 @@ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 [Markdown](h
 
 7.设置域名
 
+8.跨设备更新发布博客
+
 
 
 ### 1.安装Git
@@ -197,6 +199,30 @@ $ hexo d -g
 
 待更新
 
+
+### 8.跨设备编辑发布博客
+
+先占坑。
+
+主要步骤：
+
+1.在GitHub上yourname.github.io仓库上新建一个分支，分支名字可以随便起，比如我的叫做source，作用是用来上传博客源文件，而master分支不动，是用来上传hexo生成的静态博客文件的。
+
+2.在yourname.github.io仓库上设置source分支为默认分支
+
+3.将本地博客源文件上传到source分支，对于我来说也就是上面步骤中的/Hexoblog目录
+
+4.在其它设备上要进行编辑发布博客:
+
+  a)先安装git, node, npm, hexo以及hexo-deployer-git插件
+
+  b)选定一处目录，将GitHub上yourname.github.io仓库克隆下来，由于设置了source分支为默认分支，所以克隆下来的默认分支就是source
+
+  c)在本地仓库进行编辑文章等操作
+
+  d)需要发布的时候，和之前一样，执行hexo clean && hexo g -d命令即可
+
+  e)发布完成后，要将本地仓库上传到远程GitHub上，以便与下次如果换地方再进行发布的时候，远程仓库的博客源文件始终是最新的内容
 
 
 ## Hexo博客发布步骤
