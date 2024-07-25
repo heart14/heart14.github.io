@@ -111,6 +111,112 @@
       </tags>
   </entry>
   <entry>
+    <title>Mac mini M2(macOS Ventura 13.3.1)安装Git</title>
+    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Git/</url>
+    <content><![CDATA[<p>系列第一弹，新买了一台Mac mini M2，记录一下Java程序员的一些环境搭建过程</p>
+<h3 id="1-查看当前系统Git"><a href="#1-查看当前系统Git" class="headerlink" title="1.查看当前系统Git"></a>1.查看当前系统Git</h3><p>打开终端，执行git –version命令查看git版本，检查是否安装了git以及git版本</p>
+<p>但是此处报错了，主要信息为<em>xcode-select: note: No developer tools were found, requesting install.</em> 并且弹窗提示安装XCode。</p>
+<p>如果按弹窗提示去安装XCode的话，需要下载好几个Gb的内容，而且我也不做苹果应用开发，所以不想安装XCode。</p>
+<p>实际上，这里Git并非一定要安装XCode，而是需要一个Command Line Tools，可以去苹果开发者网站上单独下载这个Command Line Tools。</p>
+<p>打开苹果开发者网站（<a href="https://developer.apple.com/download/all/%EF%BC%89%EF%BC%8C%E7%99%BB%E5%BD%95AppleID%EF%BC%8C%E7%99%BB%E5%BD%95%E5%90%8E%E7%9C%8B%E5%88%B0More">https://developer.apple.com/download/all/），登录AppleID，登录后看到More</a> Downloads里面，会有Command Line Tools，也可以直接搜索关键字‘Command’，然后点击xxx.dmg下载，下载完成后双击打开进行安装即可。</p>
+<p>安装完成后，再次执行git –version命令查看git版本，成功输出git版本信息。</p>
+<p>但此时的git是macOS自带的git，据说不好用，所以一般都是重新下载官网的git。</p>
+<h3 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h3><p>通过Git官网(<a href="https://git-scm.com/download/mac)%E7%9A%84%E6%8C%87%E5%8D%97%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%AE%89%E8%A3%85Git%EF%BC%9A">https://git-scm.com/download/mac)的指南，有以下几种方式来安装Git：</a></p>
+<ul>
+<li><p>Homebrew<br>Install homebrew if you don’t already have it, then:<br>$ brew install git</p>
+</li>
+<li><p>MacPorts<br>Install MacPorts if you don’t already have it, then:<br>$ sudo port install git</p>
+</li>
+<li><p>Xcode<br>Apple ships a binary package of Git with Xcode.</p>
+</li>
+<li><p>Binary installer<br>Tim Harper provides an installer for Git. The latest version is 2.33.0, which was released over 1 year ago, on 2021-08-30.</p>
+</li>
+<li><p>Building from Source<br>If you prefer to build from source, you can find tarballs on kernel.org. The latest version is 2.40.0.</p>
+</li>
+<li><p>Installing git-gui<br>If you would like to install git-gui and gitk, git’s commit GUI and interactive history browser, you can do so using homebrew<br>$ brew install git-gui</p>
+</li>
+</ul>
+<p>而且！网上一些推荐教程里面都是说无需卸载mac自带的git，只需安装好新的git后把环境变量配置改为指向新的git home即可，但是，我这台新的mac mini，没有<del>&#x2F;.bash_profile文件，也没有</del>&#x2F;.zshrc文件，我也不知道现在的环境变量配置在哪里了，所以我决定不安装新的git了，就用系统自带的这个吧。。。</p>
+<h3 id="3-配置Git"><a href="#3-配置Git" class="headerlink" title="3.配置Git"></a>3.配置Git</h3><h4 id="3-1-基本配置"><a href="#3-1-基本配置" class="headerlink" title="3.1.基本配置"></a>3.1.基本配置</h4><p>查看Git全局配置</p>
+<blockquote>
+<p>git config –global –list </p>
+</blockquote>
+<p>设置Git用户信息</p>
+<blockquote>
+<p>git config –global user.name “your name”<br>git config –global user.email “your email”</p>
+</blockquote>
+<h4 id="3-2-配置Github"><a href="#3-2-配置Github" class="headerlink" title="3.2.配置Github"></a>3.2.配置Github</h4><h5 id="3-2-1生成ssh-key"><a href="#3-2-1生成ssh-key" class="headerlink" title="3.2.1生成ssh key"></a>3.2.1生成ssh key</h5><blockquote>
+<p>ssh-keygen -t rsa -C “your email”</p>
+</blockquote>
+<p>在终端中执行上述命令，回车后会有三次让你输入密码的地方，直接按回车键跳过即可</p>
+<p>命令执行完之后，生成的id_rsa和id_rsa.pub文件位于~&#x2F;.ssh目录</p>
+<h5 id="3-2-2Github配置"><a href="#3-2-2Github配置" class="headerlink" title="3.2.2Github配置"></a>3.2.2Github配置</h5><p>a)复制id_rsa.pub文件内的所有内容</p>
+<p>b)打开Github -&gt; settings -&gt; SSH and GPG Keys -&gt; New SSH key -&gt; 填写一个Title，然后在下面框里粘贴刚才复制到内容，保存即可</p>
+<h5 id="3-2-3测试Github连接"><a href="#3-2-3测试Github连接" class="headerlink" title="3.2.3测试Github连接"></a>3.2.3测试Github连接</h5><p>测试命令</p>
+<blockquote>
+<p>ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;</a></p>
+</blockquote>
+<p>在终端中执行该命令，只要能出现以下内容，就是说明Github连接成功</p>
+<blockquote>
+<p>Hi [your name]! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<blockquote>
+<p>可能是因为第一次执行，打印了以下内容<br>The authenticity of host ‘github.com (20.205.243.166)’ can’t be established.<br>ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF&#x2F;zLDA0zPMSvHdkr4UvCOqU.<br>This key is not known by any other names<br>Are you sure you want to continue connecting (yes&#x2F;no&#x2F;[fingerprint])?<br>直接输入yes<br>然后又打印出以下内容<br>Warning: Permanently added ‘github.com’ (ED25519) to the list of known hosts.<br>PTY allocation request failed on channel 0<br>Hi heart14! You’ve successfully authenticated, but GitHub does not provide shell access.<br>同时发现yes之后，在~&#x2F;.ssh目录下生成了一个known_hosts文件</p>
+<p>说明已经成功配置好Github连接<br>再次执行ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>命令，已经不会再问yes不yes了</p>
+</blockquote>
+<blockquote>
+<p>参考：<br>优雅的卸载Mac默认的Xcode附带的Git <a href="https://ld246.com/article/1399808431515">https://ld246.com/article/1399808431515</a><br>Git命令大全 <a href="https://www.runoob.com/note/56524">https://www.runoob.com/note/56524</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>macOS</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Mac mini</tag>
+        <tag>Apple Silicon</tag>
+        <tag>M2</tag>
+        <tag>macOS</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac mini M2(macOS Ventura 13.3.1)安装Homebrew</title>
+    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Homebrew/</url>
+    <content><![CDATA[<h3 id="1-查看是否已安装了homebrew"><a href="#1-查看是否已安装了homebrew" class="headerlink" title="1.查看是否已安装了homebrew"></a>1.查看是否已安装了homebrew</h3><p>打开终端，执行命令 brew -v<br>显示zsh: command not found: brew<br>说明还未安装</p>
+<h3 id="2-安装homebrew"><a href="#2-安装homebrew" class="headerlink" title="2.安装homebrew"></a>2.安装homebrew</h3><p>homebrew的Github主页 <a href="https://github.com/Homebrew/brew">https://github.com/Homebrew/brew</a><br>homebrew的官方主页 <a href="https://brew.sh/index_zh-cn">https://brew.sh/index_zh-cn</a></p>
+<p>按照homebrew官方主页中给的命令进行安装：<br>在终端中执行命令 &#x2F;bin&#x2F;bash -c “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)”<br>但是打印了错误：<br>curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 210 ms: Couldn’t connect to server<br>意思是连接不上raw.githubusercontent.com服务器</p>
+<p>改用科大源安装Homebrew<br>首先在命令行运行如下几条命令设置环境变量：<br>export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“<br>export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“<br>export HOMEBREW_BOTTLE_DOMAIN&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-bottles">https://mirrors.ustc.edu.cn/homebrew-bottles</a>“<br>export HOMEBREW_API_DOMAIN&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-bottles/api">https://mirrors.ustc.edu.cn/homebrew-bottles/api</a>“<br>注意 export命令是一次性设置环境变量</p>
+<p>之后在命令行运行 Homebrew 安装脚本：<br>&#x2F;bin&#x2F;bash -c “$(curl -fsSL <a href="https://github.com/Homebrew/install/raw/HEAD/install.sh">https://github.com/Homebrew/install/raw/HEAD/install.sh</a>)”<br>但是又失败了<br>打印错误：<br>curl: (56) Recv failure: Operation timed out<br>操作超时，应该还是github的问题，国内网不太好连</p>
+<p>然后看到科大源镜像使用帮助上写到：<br>初次安装 Homebrew &#x2F; Linuxbrew 时，如果无法下载安装脚本， 可以使用我们每日同步的安装脚本文件。<br>&#x2F;bin&#x2F;bash -c “$(curl -fsSL <a href="https://mirrors.ustc.edu.cn/misc/brew-install.sh">https://mirrors.ustc.edu.cn/misc/brew-install.sh</a>)”</p>
+<p>在终端中执行这个命令<br>很快有了反应，让输入密码<br>输入开机密码，回车继续<br>然后又出现一行Press RETURN&#x2F;ENTER to continue or any other key to abort<br>我们继续ENTER<br>然后终端会继续打印下载过程，等待…<br>安装顺利完成！</p>
+<p>3.环境变量配置</p>
+<p>安装完成时终端上打印了以下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">......</span><br><span class="line">Warning: /opt/homebrew/bin is not <span class="keyword">in</span> your PATH.</span><br><span class="line">  Instructions on how to configure your shell <span class="keyword">for</span> Homebrew</span><br><span class="line">  can be found <span class="keyword">in</span> the <span class="string">&#x27;Next steps&#x27;</span> section below.</span><br><span class="line">==&gt; Installation successful!</span><br><span class="line"></span><br><span class="line">==&gt; Homebrew has enabled anonymous aggregate formulae and cask analytics.</span><br><span class="line">Read the analytics documentation (and how to opt-out) here:</span><br><span class="line">  https://docs.brew.sh/Analytics</span><br><span class="line">No analytics data has been sent yet (nor will any be during this install run).</span><br><span class="line"></span><br><span class="line">==&gt; Homebrew is run entirely by unpaid volunteers. Please consider donating:</span><br><span class="line">  https://github.com/Homebrew/brew<span class="comment">#donations</span></span><br><span class="line"></span><br><span class="line">==&gt; Next steps:</span><br><span class="line">- Run these two commands <span class="keyword">in</span> your terminal to add Homebrew to your PATH:</span><br><span class="line">    (<span class="built_in">echo</span>; <span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27;</span>) &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(/opt/homebrew/bin/brew shellenv)</span>&quot;</span></span><br><span class="line">- Run these commands <span class="keyword">in</span> your terminal to add the non-default Git remotes <span class="keyword">for</span> Homebrew/brew and Homebrew/homebrew-core:</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;# Set PATH, MANPATH, etc., for Homebrew.&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BREW_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/brew.git&quot;&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_CORE_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">export</span> HOMEBREW_BREW_GIT_REMOTE=<span class="string">&quot;https://mirrors.ustc.edu.cn/brew.git&quot;</span></span><br><span class="line">    <span class="built_in">export</span> HOMEBREW_CORE_GIT_REMOTE=<span class="string">&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;</span></span><br><span class="line">- Run brew <span class="built_in">help</span> to get started</span><br><span class="line">- Further documentation:</span><br><span class="line">    https://docs.brew.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<p>意思应该是让我配置环境变量<br>按照指示<br>在终端依次执行下面两条命令<br>(echo; echo ‘eval “$(&#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;brew shellenv)”‘) &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>eval “$(&#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;brew shellenv)”<br>然后执行brew -v<br>成功打印出版本号 Homebrew 4.0.13</p>
+<p>继续按照指示配置环境变量<br>echo ‘# Set PATH, MANPATH, etc., for Homebrew.’ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>echo ‘export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“‘ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>echo ‘export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“‘ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“<br>export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“</p>
+<p>然后执行brew help成功打印出brew帮助信息</p>
+<p>说明homebrew安装成功完成！</p>
+<blockquote>
+<p>参考：<br><a href="https://www.funkyspacemonkey.com/how-to-install-homebrew-on-m1-macs-running-macos-monterey">https://www.funkyspacemonkey.com/how-to-install-homebrew-on-m1-macs-running-macos-monterey</a><br><a href="https://cloud.tencent.com/developer/article/1853162">https://cloud.tencent.com/developer/article/1853162</a><br><a href="https://zhuanlan.zhihu.com/p/607620531">https://zhuanlan.zhihu.com/p/607620531</a><br><a href="https://www.jianshu.com/p/4d051b10af7e">https://www.jianshu.com/p/4d051b10af7e</a><br>科大镜像源相关<br><a href="https://mirrors.ustc.edu.cn/help/index.html#">https://mirrors.ustc.edu.cn/help/index.html#</a><br><a href="https://mirrors.ustc.edu.cn/help/brew.git.html">https://mirrors.ustc.edu.cn/help/brew.git.html</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>macOS</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Mac mini</tag>
+        <tag>Apple Silicon</tag>
+        <tag>M2</tag>
+        <tag>macOS</tag>
+        <tag>Homebrew</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac mini M2(macOS Ventura 13.3.1)安装Maven</title>
     <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Maven/</url>
     <content><![CDATA[<h3 id="1-查看是否已安装了maven"><a href="#1-查看是否已安装了maven" class="headerlink" title="1.查看是否已安装了maven"></a>1.查看是否已安装了maven</h3><p>打开终端，执行命令 mvn -v<br>显示zsh: command not found: mvn<br>说明还未安装</p>
@@ -278,6 +384,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2018/02/12/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>建站</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>主题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Hexo搭建个人博客</title>
     <url>/2018/02/12/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="Hexo简介"><a href="#Hexo简介" class="headerlink" title="Hexo简介"></a>Hexo简介</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
@@ -406,137 +537,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac mini M2(macOS Ventura 13.3.1)安装Homebrew</title>
-    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Homebrew/</url>
-    <content><![CDATA[<h3 id="1-查看是否已安装了homebrew"><a href="#1-查看是否已安装了homebrew" class="headerlink" title="1.查看是否已安装了homebrew"></a>1.查看是否已安装了homebrew</h3><p>打开终端，执行命令 brew -v<br>显示zsh: command not found: brew<br>说明还未安装</p>
-<h3 id="2-安装homebrew"><a href="#2-安装homebrew" class="headerlink" title="2.安装homebrew"></a>2.安装homebrew</h3><p>homebrew的Github主页 <a href="https://github.com/Homebrew/brew">https://github.com/Homebrew/brew</a><br>homebrew的官方主页 <a href="https://brew.sh/index_zh-cn">https://brew.sh/index_zh-cn</a></p>
-<p>按照homebrew官方主页中给的命令进行安装：<br>在终端中执行命令 &#x2F;bin&#x2F;bash -c “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)”<br>但是打印了错误：<br>curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 210 ms: Couldn’t connect to server<br>意思是连接不上raw.githubusercontent.com服务器</p>
-<p>改用科大源安装Homebrew<br>首先在命令行运行如下几条命令设置环境变量：<br>export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“<br>export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“<br>export HOMEBREW_BOTTLE_DOMAIN&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-bottles">https://mirrors.ustc.edu.cn/homebrew-bottles</a>“<br>export HOMEBREW_API_DOMAIN&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-bottles/api">https://mirrors.ustc.edu.cn/homebrew-bottles/api</a>“<br>注意 export命令是一次性设置环境变量</p>
-<p>之后在命令行运行 Homebrew 安装脚本：<br>&#x2F;bin&#x2F;bash -c “$(curl -fsSL <a href="https://github.com/Homebrew/install/raw/HEAD/install.sh">https://github.com/Homebrew/install/raw/HEAD/install.sh</a>)”<br>但是又失败了<br>打印错误：<br>curl: (56) Recv failure: Operation timed out<br>操作超时，应该还是github的问题，国内网不太好连</p>
-<p>然后看到科大源镜像使用帮助上写到：<br>初次安装 Homebrew &#x2F; Linuxbrew 时，如果无法下载安装脚本， 可以使用我们每日同步的安装脚本文件。<br>&#x2F;bin&#x2F;bash -c “$(curl -fsSL <a href="https://mirrors.ustc.edu.cn/misc/brew-install.sh">https://mirrors.ustc.edu.cn/misc/brew-install.sh</a>)”</p>
-<p>在终端中执行这个命令<br>很快有了反应，让输入密码<br>输入开机密码，回车继续<br>然后又出现一行Press RETURN&#x2F;ENTER to continue or any other key to abort<br>我们继续ENTER<br>然后终端会继续打印下载过程，等待…<br>安装顺利完成！</p>
-<p>3.环境变量配置</p>
-<p>安装完成时终端上打印了以下内容</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">......</span><br><span class="line">Warning: /opt/homebrew/bin is not <span class="keyword">in</span> your PATH.</span><br><span class="line">  Instructions on how to configure your shell <span class="keyword">for</span> Homebrew</span><br><span class="line">  can be found <span class="keyword">in</span> the <span class="string">&#x27;Next steps&#x27;</span> section below.</span><br><span class="line">==&gt; Installation successful!</span><br><span class="line"></span><br><span class="line">==&gt; Homebrew has enabled anonymous aggregate formulae and cask analytics.</span><br><span class="line">Read the analytics documentation (and how to opt-out) here:</span><br><span class="line">  https://docs.brew.sh/Analytics</span><br><span class="line">No analytics data has been sent yet (nor will any be during this install run).</span><br><span class="line"></span><br><span class="line">==&gt; Homebrew is run entirely by unpaid volunteers. Please consider donating:</span><br><span class="line">  https://github.com/Homebrew/brew<span class="comment">#donations</span></span><br><span class="line"></span><br><span class="line">==&gt; Next steps:</span><br><span class="line">- Run these two commands <span class="keyword">in</span> your terminal to add Homebrew to your PATH:</span><br><span class="line">    (<span class="built_in">echo</span>; <span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27;</span>) &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(/opt/homebrew/bin/brew shellenv)</span>&quot;</span></span><br><span class="line">- Run these commands <span class="keyword">in</span> your terminal to add the non-default Git remotes <span class="keyword">for</span> Homebrew/brew and Homebrew/homebrew-core:</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;# Set PATH, MANPATH, etc., for Homebrew.&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BREW_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/brew.git&quot;&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_CORE_GIT_REMOTE=&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;&#x27;</span> &gt;&gt; /Users/liwenfei/.zprofile</span><br><span class="line">    <span class="built_in">export</span> HOMEBREW_BREW_GIT_REMOTE=<span class="string">&quot;https://mirrors.ustc.edu.cn/brew.git&quot;</span></span><br><span class="line">    <span class="built_in">export</span> HOMEBREW_CORE_GIT_REMOTE=<span class="string">&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;</span></span><br><span class="line">- Run brew <span class="built_in">help</span> to get started</span><br><span class="line">- Further documentation:</span><br><span class="line">    https://docs.brew.sh</span><br></pre></td></tr></table></figure>
-
-
-
-<p>意思应该是让我配置环境变量<br>按照指示<br>在终端依次执行下面两条命令<br>(echo; echo ‘eval “$(&#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;brew shellenv)”‘) &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>eval “$(&#x2F;opt&#x2F;homebrew&#x2F;bin&#x2F;brew shellenv)”<br>然后执行brew -v<br>成功打印出版本号 Homebrew 4.0.13</p>
-<p>继续按照指示配置环境变量<br>echo ‘# Set PATH, MANPATH, etc., for Homebrew.’ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>echo ‘export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“‘ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>echo ‘export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“‘ &gt;&gt; &#x2F;Users&#x2F;liwenfei&#x2F;.zprofile<br>export HOMEBREW_BREW_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/brew.git">https://mirrors.ustc.edu.cn/brew.git</a>“<br>export HOMEBREW_CORE_GIT_REMOTE&#x3D;”<a href="https://mirrors.ustc.edu.cn/homebrew-core.git">https://mirrors.ustc.edu.cn/homebrew-core.git</a>“</p>
-<p>然后执行brew help成功打印出brew帮助信息</p>
-<p>说明homebrew安装成功完成！</p>
-<blockquote>
-<p>参考：<br><a href="https://www.funkyspacemonkey.com/how-to-install-homebrew-on-m1-macs-running-macos-monterey">https://www.funkyspacemonkey.com/how-to-install-homebrew-on-m1-macs-running-macos-monterey</a><br><a href="https://cloud.tencent.com/developer/article/1853162">https://cloud.tencent.com/developer/article/1853162</a><br><a href="https://zhuanlan.zhihu.com/p/607620531">https://zhuanlan.zhihu.com/p/607620531</a><br><a href="https://www.jianshu.com/p/4d051b10af7e">https://www.jianshu.com/p/4d051b10af7e</a><br>科大镜像源相关<br><a href="https://mirrors.ustc.edu.cn/help/index.html#">https://mirrors.ustc.edu.cn/help/index.html#</a><br><a href="https://mirrors.ustc.edu.cn/help/brew.git.html">https://mirrors.ustc.edu.cn/help/brew.git.html</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>Mac mini</tag>
-        <tag>Apple Silicon</tag>
-        <tag>M2</tag>
-        <tag>macOS</tag>
-        <tag>Homebrew</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac mini M2(macOS Ventura 13.3.1)安装Git</title>
-    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Git/</url>
-    <content><![CDATA[<p>系列第一弹，新买了一台Mac mini M2，记录一下Java程序员的一些环境搭建过程</p>
-<h3 id="1-查看当前系统Git"><a href="#1-查看当前系统Git" class="headerlink" title="1.查看当前系统Git"></a>1.查看当前系统Git</h3><p>打开终端，执行git –version命令查看git版本，检查是否安装了git以及git版本</p>
-<p>但是此处报错了，主要信息为<em>xcode-select: note: No developer tools were found, requesting install.</em> 并且弹窗提示安装XCode。</p>
-<p>如果按弹窗提示去安装XCode的话，需要下载好几个Gb的内容，而且我也不做苹果应用开发，所以不想安装XCode。</p>
-<p>实际上，这里Git并非一定要安装XCode，而是需要一个Command Line Tools，可以去苹果开发者网站上单独下载这个Command Line Tools。</p>
-<p>打开苹果开发者网站（<a href="https://developer.apple.com/download/all/%EF%BC%89%EF%BC%8C%E7%99%BB%E5%BD%95AppleID%EF%BC%8C%E7%99%BB%E5%BD%95%E5%90%8E%E7%9C%8B%E5%88%B0More">https://developer.apple.com/download/all/），登录AppleID，登录后看到More</a> Downloads里面，会有Command Line Tools，也可以直接搜索关键字‘Command’，然后点击xxx.dmg下载，下载完成后双击打开进行安装即可。</p>
-<p>安装完成后，再次执行git –version命令查看git版本，成功输出git版本信息。</p>
-<p>但此时的git是macOS自带的git，据说不好用，所以一般都是重新下载官网的git。</p>
-<h3 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h3><p>通过Git官网(<a href="https://git-scm.com/download/mac)%E7%9A%84%E6%8C%87%E5%8D%97%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%AE%89%E8%A3%85Git%EF%BC%9A">https://git-scm.com/download/mac)的指南，有以下几种方式来安装Git：</a></p>
-<ul>
-<li><p>Homebrew<br>Install homebrew if you don’t already have it, then:<br>$ brew install git</p>
-</li>
-<li><p>MacPorts<br>Install MacPorts if you don’t already have it, then:<br>$ sudo port install git</p>
-</li>
-<li><p>Xcode<br>Apple ships a binary package of Git with Xcode.</p>
-</li>
-<li><p>Binary installer<br>Tim Harper provides an installer for Git. The latest version is 2.33.0, which was released over 1 year ago, on 2021-08-30.</p>
-</li>
-<li><p>Building from Source<br>If you prefer to build from source, you can find tarballs on kernel.org. The latest version is 2.40.0.</p>
-</li>
-<li><p>Installing git-gui<br>If you would like to install git-gui and gitk, git’s commit GUI and interactive history browser, you can do so using homebrew<br>$ brew install git-gui</p>
-</li>
-</ul>
-<p>而且！网上一些推荐教程里面都是说无需卸载mac自带的git，只需安装好新的git后把环境变量配置改为指向新的git home即可，但是，我这台新的mac mini，没有<del>&#x2F;.bash_profile文件，也没有</del>&#x2F;.zshrc文件，我也不知道现在的环境变量配置在哪里了，所以我决定不安装新的git了，就用系统自带的这个吧。。。</p>
-<h3 id="3-配置Git"><a href="#3-配置Git" class="headerlink" title="3.配置Git"></a>3.配置Git</h3><h4 id="3-1-基本配置"><a href="#3-1-基本配置" class="headerlink" title="3.1.基本配置"></a>3.1.基本配置</h4><p>查看Git全局配置</p>
-<blockquote>
-<p>git config –global –list </p>
-</blockquote>
-<p>设置Git用户信息</p>
-<blockquote>
-<p>git config –global user.name “your name”<br>git config –global user.email “your email”</p>
-</blockquote>
-<h4 id="3-2-配置Github"><a href="#3-2-配置Github" class="headerlink" title="3.2.配置Github"></a>3.2.配置Github</h4><h5 id="3-2-1生成ssh-key"><a href="#3-2-1生成ssh-key" class="headerlink" title="3.2.1生成ssh key"></a>3.2.1生成ssh key</h5><blockquote>
-<p>ssh-keygen -t rsa -C “your email”</p>
-</blockquote>
-<p>在终端中执行上述命令，回车后会有三次让你输入密码的地方，直接按回车键跳过即可</p>
-<p>命令执行完之后，生成的id_rsa和id_rsa.pub文件位于~&#x2F;.ssh目录</p>
-<h5 id="3-2-2Github配置"><a href="#3-2-2Github配置" class="headerlink" title="3.2.2Github配置"></a>3.2.2Github配置</h5><p>a)复制id_rsa.pub文件内的所有内容</p>
-<p>b)打开Github -&gt; settings -&gt; SSH and GPG Keys -&gt; New SSH key -&gt; 填写一个Title，然后在下面框里粘贴刚才复制到内容，保存即可</p>
-<h5 id="3-2-3测试Github连接"><a href="#3-2-3测试Github连接" class="headerlink" title="3.2.3测试Github连接"></a>3.2.3测试Github连接</h5><p>测试命令</p>
-<blockquote>
-<p>ssh -T <a href="mailto:&#103;&#105;&#x74;&#x40;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#103;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;</a></p>
-</blockquote>
-<p>在终端中执行该命令，只要能出现以下内容，就是说明Github连接成功</p>
-<blockquote>
-<p>Hi [your name]! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
-</blockquote>
-<blockquote>
-<p>可能是因为第一次执行，打印了以下内容<br>The authenticity of host ‘github.com (20.205.243.166)’ can’t be established.<br>ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF&#x2F;zLDA0zPMSvHdkr4UvCOqU.<br>This key is not known by any other names<br>Are you sure you want to continue connecting (yes&#x2F;no&#x2F;[fingerprint])?<br>直接输入yes<br>然后又打印出以下内容<br>Warning: Permanently added ‘github.com’ (ED25519) to the list of known hosts.<br>PTY allocation request failed on channel 0<br>Hi heart14! You’ve successfully authenticated, but GitHub does not provide shell access.<br>同时发现yes之后，在~&#x2F;.ssh目录下生成了一个known_hosts文件</p>
-<p>说明已经成功配置好Github连接<br>再次执行ssh -T <a href="mailto:&#x67;&#105;&#116;&#64;&#103;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#103;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;</a>命令，已经不会再问yes不yes了</p>
-</blockquote>
-<blockquote>
-<p>参考：<br>优雅的卸载Mac默认的Xcode附带的Git <a href="https://ld246.com/article/1399808431515">https://ld246.com/article/1399808431515</a><br>Git命令大全 <a href="https://www.runoob.com/note/56524">https://www.runoob.com/note/56524</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>Mac mini</tag>
-        <tag>Apple Silicon</tag>
-        <tag>M2</tag>
-        <tag>macOS</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2018/02/12/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>建站</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>主题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>同事笑谈</title>
     <url>/2023/02/13/%E5%90%8C%E4%BA%8B%E7%AC%91%E8%B0%88/</url>
     <content><![CDATA[<p>今天中午吃饭时，两个大聪明同事再次让我惊掉下巴。</p>
@@ -568,6 +568,77 @@
       </categories>
       <tags>
         <tag>杂记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>同时设置公司与个人的Git环境与Maven配置</title>
+    <url>/2023/02/22/%E5%90%8C%E6%97%B6%E8%AE%BE%E7%BD%AE%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%B8%AA%E4%BA%BA%E7%9A%84Git%E7%8E%AF%E5%A2%83%E4%B8%8EMaven%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="需求说明"><a href="#需求说明" class="headerlink" title="需求说明"></a>需求说明</h2><p>假如我的笔记本电脑，要在公司作为办公开发电脑，连接公司内网、内网Maven依赖仓库与内网Gitlab代码仓库，开发公司项目。同时要兼顾下班把笔记本带回家，连接阿里云Maven仓库和Github仓库，开发自己的项目。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>首先电脑上需要先安装完git。</p>
+<p>在公司，通过https方式，进行公司项目代码从gitlab仓库上传下载，不需要配置git。第一次clone的时候弹出输入账号密码的登录框，登录后记住密码，之后即可在公司pull push 代码了。</p>
+<p>在家里，通过ssh方式，进行个人项目代码从GitHub仓库上传下载。需要配置ssh key。</p>
+<p>生成shh key</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后将生成的rsa.pub文件内容复制粘贴到github个人设置中的settings–&gt;ssh key，即可进行代码上传下载。</p>
+<h4 id="git提交记录中的用户信息问题"><a href="#git提交记录中的用户信息问题" class="headerlink" title="git提交记录中的用户信息问题"></a>git提交记录中的用户信息问题</h4><p>公司gitlab账号是我的公司邮箱<a href="mailto:&#119;&#102;&#108;&#x69;&#x40;&#x63;&#104;&#x69;&#110;&#x61;&#117;&#x6d;&#115;&#46;&#99;&#x6f;&#x6d;">&#119;&#102;&#108;&#x69;&#x40;&#x63;&#104;&#x69;&#110;&#x61;&#117;&#x6d;&#115;&#46;&#99;&#x6f;&#x6d;</a>，GitHub是我的个人邮箱<a href="mailto:&#x6c;&#x77;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109;">&#x6c;&#x77;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109;</a>。</p>
+<p>由于主要是在公司使用，所以在git通用配置上，设置用户名和邮箱为公司：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;wfli&quot;</span>  </span><br><span class="line">git config --global user.email <span class="string">&quot;wfli@chinaums.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样在公司，什么都不用管，直接上传下载即可，代码提交记录上显示的就是公司里的个人信息了。</p>
+<p>然后，在家里的时候，如果也要提交代码，GitHub上显示的提交记录，也是公司里的个人信息(<a href="mailto:&#119;&#x66;&#x6c;&#105;&#64;&#x63;&#x68;&#x69;&#x6e;&#x61;&#x75;&#x6d;&#115;&#46;&#x63;&#111;&#x6d;">&#119;&#x66;&#x6c;&#105;&#64;&#x63;&#x68;&#x69;&#x6e;&#x61;&#x75;&#x6d;&#115;&#46;&#x63;&#111;&#x6d;</a>)，这样其实也没问题，都是自己。但是如果想让它显示为GitHub的注册用户名和邮箱的话，可以在每个从GitHub下载下来的仓库目录下，单独设置user.name和email属性：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">&quot;heart14&quot;</span>  </span><br><span class="line">git config --<span class="built_in">local</span> user.email <span class="string">&quot;lwf14@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个–local参数使得这个配置只在这个目录生效，所以不会影响公司项目的提交。</p>
+<p>这样配置之后，即可实现，公司项目通过HTTPS方式，以wfli&#x2F;<a href="mailto:&#119;&#102;&#x6c;&#105;&#64;&#99;&#x68;&#105;&#110;&#97;&#117;&#x6d;&#x73;&#46;&#x63;&#x6f;&#109;">&#119;&#102;&#x6c;&#105;&#64;&#99;&#x68;&#105;&#110;&#97;&#117;&#x6d;&#x73;&#46;&#x63;&#x6f;&#109;</a>用户提交代码，个人项目通过SSH方式，以heart14&#x2F;<a href="mailto:&#x6c;&#119;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#46;&#99;&#111;&#109;">&#x6c;&#119;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#46;&#99;&#111;&#109;</a>用户提交代码。</p>
+<blockquote>
+<p>参考：<br><a href="https://www.cnblogs.com/yanglang/p/9563496.html">https://www.cnblogs.com/yanglang/p/9563496.html</a><br><a href="https://www.cnblogs.com/hezhi/p/10317642.html">https://www.cnblogs.com/hezhi/p/10317642.html</a></p>
+</blockquote>
+<h4 id="maven依赖仓库问题"><a href="#maven依赖仓库问题" class="headerlink" title="maven依赖仓库问题"></a>maven依赖仓库问题</h4><h5 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h5><p>还有一个情况就是，</p>
+<p>在公司用的是公司搭建的私域仓库，在家用的是阿里云公共仓库。</p>
+<p>在公司连不了外网，用不了阿里云仓库，在家连不上内网，用不了公司仓库。</p>
+<p>难道每次都要去修改maven&#x2F;conf&#x2F;settings.xml文件吗？</p>
+<p>其实也不用。可以配置一下maven&#x2F;conf&#x2F;settings.xml，使得在不同环境，不同项目，可以成功下载自己所需的依赖。</p>
+<h5 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h5><p>在maven&#x2F;conf&#x2F;settings.xml的profile节点进行配置maven仓库镜像，这里可以配置多个仓库，他们会同时生效，也可以在Intellj idea上的maven插件上进行控制具体哪个仓库生效。</p>
+<p>这里配置多个仓库后，会依次检索每个生效的仓库，如果连接失败或者没找到所需的依赖包，会去下一个生效的仓库查找。这样公司项目可以从公司maven仓库下载依赖，个人项目也可以从阿里云仓库下载依赖了。</p>
+<p>而以往在mirrors里面配置，mirror相当于是对仓库的一个备份。即便配置了多个mirror，也只有在第一个仓库连接失败的时候才会进行连接下一个仓库，否则，只要连接成功，即使在仓库里没有找到依赖，也不会去下一个仓库找。这样就不能满足我们的需求了。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Maven</tag>
+        <tag>GitHub</tag>
+        <tag>GitLab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我和猫，都很想你</title>
+    <url>/2021/03/31/%E6%88%91%E5%92%8C%E7%8C%AB%EF%BC%8C%E9%83%BD%E5%BE%88%E6%83%B3%E4%BD%A0/</url>
+    <content><![CDATA[<p>生日快乐<br>李嘉图两岁了</p>
+<p>其实也不是今天出生<br>我不知道他哪天出生的<br>只是两年前的今天<br>仿佛愚人节的玩笑一般<br>他在我阳台外面的院子里趴了一天<br>天黑之后我就把他抱了进来</p>
+<p>那就算是今天生日吧</p>
+<p>李嘉图来之前<br>我一直盘算着要养一只猫<br>也不用什么高贵品种<br>救助站领养一只就可以<br>但我联系了一个领养之家<br>emmm<br>条件有点高<br>要在上海有房<br>要看我收入情况<br>要留身份证照片<br>还要定期回访检查我养的怎么样<br>对不起<br>我不配领养</p>
+<p>所以李嘉图的到来<br>仿佛愚人节的赠礼一般<br>不需要任何附加条件<br>在那天昏暗的院子里<br>他看着我<br>我看着他<br>可能他跟我一样<br>在心里说了一声<br>“就你了”</p>
+<p>破天荒的给他开了一个罐头<br>李嘉图极少吃这个<br>从小一直吃猫粮<br>两年来也就偶尔买过几次小鱼干<br>李嘉图抱着小鱼干<br>胸前的白围脖上掉满了鱼籽渣渣<br>不知道他心里有没有想过<br>别人家的小猫咪<br>主食零食干粮湿粮鸡肉牛肉冻干罐头<br>猫生拥有那么多美食<br>真幸福<br>不过我想<br>李嘉图应该不知道原来猫生还有这么多好吃的<br>毕竟我只给他吃猫粮<br>每天他在嘎吱嘎吱嚼着猫粮的时候<br>肯定挺幸福的吧<br>不然也不会长到这么胖</p>
+<p>李嘉图真的是有点胖了<br>捡回来的时候在医院称的是450克<br>还不到一斤<br>现在已经十六斤！！！！<br>翻翻以前的照片<br>我还是从前那个少年<br>李嘉图却已经大腹便便<br>不得不感叹<br>岁月真是把杀猫刀</p>
+<p>医生也说他太胖了<br>过度肥胖可能会影响寿命<br>听完我还挺淡定<br>我觉得<br>我已经决定陪他走完这一生<br>他也必定会用这一生来陪我<br>那不管是长是短<br>互相陪伴的时候<br>开心就好<br>我问李嘉图：“你开心吗？”<br>他说：“咩”</p>
+<p>是的<br>李嘉图的叫声有两种<br>一种是带着颤音的“～嗯～”<br>一种是嗲嗲的“～咩～”<br>反倒是“喵呜喵呜”的经典猫叫不常有<br>每次他张开粉嫩的嘴巴<br>露出四颗尖牙中间还夹带着上下两排特别迷你特别q的门牙<br>歪着头咩咩叫的时候<br>我心都要化了<br>然后我就学他叫<br>“咩咩咩”<br>但其实我不懂他<br>他也不懂我<br>看似沟通无碍<br>实则鸡同鸭讲<br>我想终止这样的对话<br>我说“李嘉图你不要叫了”<br>他也不管我<br>继续在叫<br>“咩咩咩”</p>
+<p>李嘉图名字叫李嘉图<br>是曾经很喜欢的小说《龙族》里面男主的名字<br>其实男主在小说里是个废材衰仔<br>但他有个特殊能力<br>对着濒死的一切生物喊出“不要死”<br>就能操纵生命起死回生<br>当然这只是小说<br>李嘉图刚捡回来的时候一身病灶<br>每天早上醒来<br>我都怕他撑不过昨天漫长的夜晚<br>所以给他取这个名字<br>希望能保住一命<br>只要活着<br>我一定救他</p>
+<p>但这个故事听起来有点中二</p>
+<p>很多人看到李嘉图时问他叫什么名字啊<br>我说他叫李嘉图<br>然后他们露出奇怪的表情<br>刚开始我还会给他们讲讲这个中二的故事<br>后来我发现他们好像就只是随口问问而已<br>对这个故事并没有很大兴趣<br>我也懒得再讲</p>
+<p>-你家猫好可爱叫什么名字啊？<br>-李嘉图<br>-这么正式的名字？<br>-嗯……当儿子养的，随我姓</p>
+<p>我的好大儿也算孝顺<br>特别黏我<br>我下班回来他一定在门口迎接我回家<br>我在桌边工作他就睡在桌子底下<br>我躺在床上他就窝在我的旁边<br>我去厨房他就蹲在我的脚边仰着头看我在做什么好吃的<br>我去上厕所他就疯狂扒门好像担心我会死在里面<br>……<br>这两年来<br>是李嘉图给了我无限多的温暖</p>
+<p>李嘉图吃完罐头又去睡觉了<br>圆滚滚的肚子<br>宛如智障的表情<br>丝毫不管我清理毛毛时的苦痛<br>在床上睡的乱七八糟<br>猫生无忧无虑</p>
+<p>真好</p>
+<p>李嘉图啊<br>上次那个阿姨在电话里问你最近过得好吗<br>我说，挺好的<br>如果有一天你能再见到那个阿姨<br>能不能帮我说一句话<br>你跟她说<br>“我和李 都很想你”</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -607,77 +678,6 @@
     <title>无问西东</title>
     <url>/2018/02/24/%E6%97%A0%E9%97%AE%E8%A5%BF%E4%B8%9C/</url>
     <content><![CDATA[<p>大概一个月前去看的《无问西东》，电影中梅贻琦校长关于“真实”一词的说法令我思索至今：<br>​“你看到什么，听到什么，做什么，和谁在一起，如果有一种从心灵深处满溢出来的，不懊悔也不羞耻的，平和与喜悦，那就是真实。”<br>​从看完电影回来，我就一直对这句话不能释怀，现在的生活真实吗？不真实！甚至充满了懊悔并无限怀念以前的校园时光，对自己现在所做的工作没有热爱没有激情，有的只是机械的重复，有的只是能换来一份薪水来使自己在这社会的洪流中得以活命。<br>​这半年多的时间里，最快乐的时候就是每次约上青山去网吧开黑的时候，耳机里传出熟悉的声音，仿佛回到了从前“并肩战斗”的时光，唯有这些错觉，能给操蛋的当下带来一丝宽慰，觉得不那么孤独。悠享飞宇城市英雄，食堂外卖鸡蛋灌饼，山南站北爱情湖畔，晚出晨归春夏秋冬。可这些过往又是在记忆里那么清晰，点点滴滴，那么孤独。<br>​下午坐上火车便开始睡觉，一觉醒来天色将歇，昏暗的车厢灰蒙蒙的窗外以及那遥远的目的地，心里想到李白一首《行路难》，停杯投箸不能食，拔剑四顾心茫然。“世界那么大，我想去看看”说的何其潇洒，现实却是欲渡黄河冰塞川，将登太行雪满山。但即便如此，我们也要向前啊，家里的父母终于盼到你长大成人，还在等着你独当一面。<br>​  悟已往之不谏，知来者之可追。<br>​  实迷途其未远，觉今是而昨非。<br>​虽不敢说今是昨非，但当你觉得你需要改变的时候，那就别再犹豫，从现在开始改变。<br>​  - 大圣此去欲何？<br>​  - 踏南天，碎凌霄！<br>​  - 若一去不回……<br>​  - 便一去不回。</p>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>同时设置公司与个人的Git环境与Maven配置</title>
-    <url>/2023/02/22/%E5%90%8C%E6%97%B6%E8%AE%BE%E7%BD%AE%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%B8%AA%E4%BA%BA%E7%9A%84Git%E7%8E%AF%E5%A2%83%E4%B8%8EMaven%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="需求说明"><a href="#需求说明" class="headerlink" title="需求说明"></a>需求说明</h2><p>假如我的笔记本电脑，要在公司作为办公开发电脑，连接公司内网、内网Maven依赖仓库与内网Gitlab代码仓库，开发公司项目。同时要兼顾下班把笔记本带回家，连接阿里云Maven仓库和Github仓库，开发自己的项目。</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>首先电脑上需要先安装完git。</p>
-<p>在公司，通过https方式，进行公司项目代码从gitlab仓库上传下载，不需要配置git。第一次clone的时候弹出输入账号密码的登录框，登录后记住密码，之后即可在公司pull push 代码了。</p>
-<p>在家里，通过ssh方式，进行个人项目代码从GitHub仓库上传下载。需要配置ssh key。</p>
-<p>生成shh key</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>然后将生成的rsa.pub文件内容复制粘贴到github个人设置中的settings–&gt;ssh key，即可进行代码上传下载。</p>
-<h4 id="git提交记录中的用户信息问题"><a href="#git提交记录中的用户信息问题" class="headerlink" title="git提交记录中的用户信息问题"></a>git提交记录中的用户信息问题</h4><p>公司gitlab账号是我的公司邮箱<a href="mailto:&#119;&#x66;&#x6c;&#x69;&#64;&#x63;&#104;&#x69;&#x6e;&#97;&#x75;&#x6d;&#x73;&#46;&#99;&#111;&#109;">&#119;&#x66;&#x6c;&#x69;&#64;&#x63;&#104;&#x69;&#x6e;&#97;&#x75;&#x6d;&#x73;&#46;&#99;&#111;&#109;</a>，GitHub是我的个人邮箱<a href="mailto:&#108;&#x77;&#x66;&#49;&#52;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#108;&#x77;&#x66;&#49;&#52;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;</a>。</p>
-<p>由于主要是在公司使用，所以在git通用配置上，设置用户名和邮箱为公司：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;wfli&quot;</span>  </span><br><span class="line">git config --global user.email <span class="string">&quot;wfli@chinaums.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>这样在公司，什么都不用管，直接上传下载即可，代码提交记录上显示的就是公司里的个人信息了。</p>
-<p>然后，在家里的时候，如果也要提交代码，GitHub上显示的提交记录，也是公司里的个人信息(<a href="mailto:&#119;&#x66;&#x6c;&#105;&#64;&#x63;&#104;&#105;&#x6e;&#x61;&#117;&#x6d;&#115;&#x2e;&#99;&#x6f;&#109;">&#119;&#x66;&#x6c;&#105;&#64;&#x63;&#104;&#105;&#x6e;&#x61;&#117;&#x6d;&#115;&#x2e;&#99;&#x6f;&#109;</a>)，这样其实也没问题，都是自己。但是如果想让它显示为GitHub的注册用户名和邮箱的话，可以在每个从GitHub下载下来的仓库目录下，单独设置user.name和email属性：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">&quot;heart14&quot;</span>  </span><br><span class="line">git config --<span class="built_in">local</span> user.email <span class="string">&quot;lwf14@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>这个–local参数使得这个配置只在这个目录生效，所以不会影响公司项目的提交。</p>
-<p>这样配置之后，即可实现，公司项目通过HTTPS方式，以wfli&#x2F;<a href="mailto:&#x77;&#102;&#x6c;&#x69;&#64;&#x63;&#104;&#x69;&#x6e;&#x61;&#117;&#109;&#x73;&#x2e;&#99;&#111;&#109;">&#x77;&#102;&#x6c;&#x69;&#64;&#x63;&#104;&#x69;&#x6e;&#x61;&#117;&#109;&#x73;&#x2e;&#99;&#111;&#109;</a>用户提交代码，个人项目通过SSH方式，以heart14&#x2F;<a href="mailto:&#108;&#x77;&#x66;&#49;&#52;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#108;&#x77;&#x66;&#49;&#52;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a>用户提交代码。</p>
-<blockquote>
-<p>参考：<br><a href="https://www.cnblogs.com/yanglang/p/9563496.html">https://www.cnblogs.com/yanglang/p/9563496.html</a><br><a href="https://www.cnblogs.com/hezhi/p/10317642.html">https://www.cnblogs.com/hezhi/p/10317642.html</a></p>
-</blockquote>
-<h4 id="maven依赖仓库问题"><a href="#maven依赖仓库问题" class="headerlink" title="maven依赖仓库问题"></a>maven依赖仓库问题</h4><h5 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h5><p>还有一个情况就是，</p>
-<p>在公司用的是公司搭建的私域仓库，在家用的是阿里云公共仓库。</p>
-<p>在公司连不了外网，用不了阿里云仓库，在家连不上内网，用不了公司仓库。</p>
-<p>难道每次都要去修改maven&#x2F;conf&#x2F;settings.xml文件吗？</p>
-<p>其实也不用。可以配置一下maven&#x2F;conf&#x2F;settings.xml，使得在不同环境，不同项目，可以成功下载自己所需的依赖。</p>
-<h5 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h5><p>在maven&#x2F;conf&#x2F;settings.xml的profile节点进行配置maven仓库镜像，这里可以配置多个仓库，他们会同时生效，也可以在Intellj idea上的maven插件上进行控制具体哪个仓库生效。</p>
-<p>这里配置多个仓库后，会依次检索每个生效的仓库，如果连接失败或者没找到所需的依赖包，会去下一个生效的仓库查找。这样公司项目可以从公司maven仓库下载依赖，个人项目也可以从阿里云仓库下载依赖了。</p>
-<p>而以往在mirrors里面配置，mirror相当于是对仓库的一个备份。即便配置了多个mirror，也只有在第一个仓库连接失败的时候才会进行连接下一个仓库，否则，只要连接成功，即使在仓库里没有找到依赖，也不会去下一个仓库找。这样就不能满足我们的需求了。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
-        <tag>Git</tag>
-        <tag>GitHub</tag>
-        <tag>GitLab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我和猫，都很想你</title>
-    <url>/2021/03/31/%E6%88%91%E5%92%8C%E7%8C%AB%EF%BC%8C%E9%83%BD%E5%BE%88%E6%83%B3%E4%BD%A0/</url>
-    <content><![CDATA[<p>生日快乐<br>李嘉图两岁了</p>
-<p>其实也不是今天出生<br>我不知道他哪天出生的<br>只是两年前的今天<br>仿佛愚人节的玩笑一般<br>他在我阳台外面的院子里趴了一天<br>天黑之后我就把他抱了进来</p>
-<p>那就算是今天生日吧</p>
-<p>李嘉图来之前<br>我一直盘算着要养一只猫<br>也不用什么高贵品种<br>救助站领养一只就可以<br>但我联系了一个领养之家<br>emmm<br>条件有点高<br>要在上海有房<br>要看我收入情况<br>要留身份证照片<br>还要定期回访检查我养的怎么样<br>对不起<br>我不配领养</p>
-<p>所以李嘉图的到来<br>仿佛愚人节的赠礼一般<br>不需要任何附加条件<br>在那天昏暗的院子里<br>他看着我<br>我看着他<br>可能他跟我一样<br>在心里说了一声<br>“就你了”</p>
-<p>破天荒的给他开了一个罐头<br>李嘉图极少吃这个<br>从小一直吃猫粮<br>两年来也就偶尔买过几次小鱼干<br>李嘉图抱着小鱼干<br>胸前的白围脖上掉满了鱼籽渣渣<br>不知道他心里有没有想过<br>别人家的小猫咪<br>主食零食干粮湿粮鸡肉牛肉冻干罐头<br>猫生拥有那么多美食<br>真幸福<br>不过我想<br>李嘉图应该不知道原来猫生还有这么多好吃的<br>毕竟我只给他吃猫粮<br>每天他在嘎吱嘎吱嚼着猫粮的时候<br>肯定挺幸福的吧<br>不然也不会长到这么胖</p>
-<p>李嘉图真的是有点胖了<br>捡回来的时候在医院称的是450克<br>还不到一斤<br>现在已经十六斤！！！！<br>翻翻以前的照片<br>我还是从前那个少年<br>李嘉图却已经大腹便便<br>不得不感叹<br>岁月真是把杀猫刀</p>
-<p>医生也说他太胖了<br>过度肥胖可能会影响寿命<br>听完我还挺淡定<br>我觉得<br>我已经决定陪他走完这一生<br>他也必定会用这一生来陪我<br>那不管是长是短<br>互相陪伴的时候<br>开心就好<br>我问李嘉图：“你开心吗？”<br>他说：“咩”</p>
-<p>是的<br>李嘉图的叫声有两种<br>一种是带着颤音的“～嗯～”<br>一种是嗲嗲的“～咩～”<br>反倒是“喵呜喵呜”的经典猫叫不常有<br>每次他张开粉嫩的嘴巴<br>露出四颗尖牙中间还夹带着上下两排特别迷你特别q的门牙<br>歪着头咩咩叫的时候<br>我心都要化了<br>然后我就学他叫<br>“咩咩咩”<br>但其实我不懂他<br>他也不懂我<br>看似沟通无碍<br>实则鸡同鸭讲<br>我想终止这样的对话<br>我说“李嘉图你不要叫了”<br>他也不管我<br>继续在叫<br>“咩咩咩”</p>
-<p>李嘉图名字叫李嘉图<br>是曾经很喜欢的小说《龙族》里面男主的名字<br>其实男主在小说里是个废材衰仔<br>但他有个特殊能力<br>对着濒死的一切生物喊出“不要死”<br>就能操纵生命起死回生<br>当然这只是小说<br>李嘉图刚捡回来的时候一身病灶<br>每天早上醒来<br>我都怕他撑不过昨天漫长的夜晚<br>所以给他取这个名字<br>希望能保住一命<br>只要活着<br>我一定救他</p>
-<p>但这个故事听起来有点中二</p>
-<p>很多人看到李嘉图时问他叫什么名字啊<br>我说他叫李嘉图<br>然后他们露出奇怪的表情<br>刚开始我还会给他们讲讲这个中二的故事<br>后来我发现他们好像就只是随口问问而已<br>对这个故事并没有很大兴趣<br>我也懒得再讲</p>
-<p>-你家猫好可爱叫什么名字啊？<br>-李嘉图<br>-这么正式的名字？<br>-嗯……当儿子养的，随我姓</p>
-<p>我的好大儿也算孝顺<br>特别黏我<br>我下班回来他一定在门口迎接我回家<br>我在桌边工作他就睡在桌子底下<br>我躺在床上他就窝在我的旁边<br>我去厨房他就蹲在我的脚边仰着头看我在做什么好吃的<br>我去上厕所他就疯狂扒门好像担心我会死在里面<br>……<br>这两年来<br>是李嘉图给了我无限多的温暖</p>
-<p>李嘉图吃完罐头又去睡觉了<br>圆滚滚的肚子<br>宛如智障的表情<br>丝毫不管我清理毛毛时的苦痛<br>在床上睡的乱七八糟<br>猫生无忧无虑</p>
-<p>真好</p>
-<p>李嘉图啊<br>上次那个阿姨在电话里问你最近过得好吗<br>我说，挺好的<br>如果有一天你能再见到那个阿姨<br>能不能帮我说一句话<br>你跟她说<br>“我和李 都很想你”</p>
 ]]></content>
       <categories>
         <category>随笔</category>
