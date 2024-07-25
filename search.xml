@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Mac mini M2(macOS Ventura 13.3.1)安装Git</title>
+    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Git/</url>
+    <content><![CDATA[<p>系列第一弹，新买了一台Mac mini M2，记录一下Java程序员的一些环境搭建过程</p>
+<h3 id="1-查看当前系统Git"><a href="#1-查看当前系统Git" class="headerlink" title="1.查看当前系统Git"></a>1.查看当前系统Git</h3><p>打开终端，执行git –version命令查看git版本，检查是否安装了git以及git版本</p>
+<p>但是此处报错了，主要信息为<em>xcode-select: note: No developer tools were found, requesting install.</em> 并且弹窗提示安装XCode。</p>
+<p>如果按弹窗提示去安装XCode的话，需要下载好几个Gb的内容，而且我也不做苹果应用开发，所以不想安装XCode。</p>
+<p>实际上，这里Git并非一定要安装XCode，而是需要一个Command Line Tools，可以去苹果开发者网站上单独下载这个Command Line Tools。</p>
+<p>打开苹果开发者网站（<a href="https://developer.apple.com/download/all/%EF%BC%89%EF%BC%8C%E7%99%BB%E5%BD%95AppleID%EF%BC%8C%E7%99%BB%E5%BD%95%E5%90%8E%E7%9C%8B%E5%88%B0More">https://developer.apple.com/download/all/），登录AppleID，登录后看到More</a> Downloads里面，会有Command Line Tools，也可以直接搜索关键字‘Command’，然后点击xxx.dmg下载，下载完成后双击打开进行安装即可。</p>
+<p>安装完成后，再次执行git –version命令查看git版本，成功输出git版本信息。</p>
+<p>但此时的git是macOS自带的git，据说不好用，所以一般都是重新下载官网的git。</p>
+<h3 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h3><p>通过Git官网(<a href="https://git-scm.com/download/mac)%E7%9A%84%E6%8C%87%E5%8D%97%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%AE%89%E8%A3%85Git%EF%BC%9A">https://git-scm.com/download/mac)的指南，有以下几种方式来安装Git：</a></p>
+<ul>
+<li><p>Homebrew<br>Install homebrew if you don’t already have it, then:<br>$ brew install git</p>
+</li>
+<li><p>MacPorts<br>Install MacPorts if you don’t already have it, then:<br>$ sudo port install git</p>
+</li>
+<li><p>Xcode<br>Apple ships a binary package of Git with Xcode.</p>
+</li>
+<li><p>Binary installer<br>Tim Harper provides an installer for Git. The latest version is 2.33.0, which was released over 1 year ago, on 2021-08-30.</p>
+</li>
+<li><p>Building from Source<br>If you prefer to build from source, you can find tarballs on kernel.org. The latest version is 2.40.0.</p>
+</li>
+<li><p>Installing git-gui<br>If you would like to install git-gui and gitk, git’s commit GUI and interactive history browser, you can do so using homebrew<br>$ brew install git-gui</p>
+</li>
+</ul>
+<p>而且！网上一些推荐教程里面都是说无需卸载mac自带的git，只需安装好新的git后把环境变量配置改为指向新的git home即可，但是，我这台新的mac mini，没有<del>&#x2F;.bash_profile文件，也没有</del>&#x2F;.zshrc文件，我也不知道现在的环境变量配置在哪里了，所以我决定不安装新的git了，就用系统自带的这个吧。。。</p>
+<h3 id="3-配置Git"><a href="#3-配置Git" class="headerlink" title="3.配置Git"></a>3.配置Git</h3><h4 id="3-1-基本配置"><a href="#3-1-基本配置" class="headerlink" title="3.1.基本配置"></a>3.1.基本配置</h4><p>查看Git全局配置</p>
+<blockquote>
+<p>git config –global –list </p>
+</blockquote>
+<p>设置Git用户信息</p>
+<blockquote>
+<p>git config –global user.name “your name”<br>git config –global user.email “your email”</p>
+</blockquote>
+<h4 id="3-2-配置Github"><a href="#3-2-配置Github" class="headerlink" title="3.2.配置Github"></a>3.2.配置Github</h4><h5 id="3-2-1生成ssh-key"><a href="#3-2-1生成ssh-key" class="headerlink" title="3.2.1生成ssh key"></a>3.2.1生成ssh key</h5><blockquote>
+<p>ssh-keygen -t rsa -C “your email”</p>
+</blockquote>
+<p>在终端中执行上述命令，回车后会有三次让你输入密码的地方，直接按回车键跳过即可</p>
+<p>命令执行完之后，生成的id_rsa和id_rsa.pub文件位于~&#x2F;.ssh目录</p>
+<h5 id="3-2-2Github配置"><a href="#3-2-2Github配置" class="headerlink" title="3.2.2Github配置"></a>3.2.2Github配置</h5><p>a)复制id_rsa.pub文件内的所有内容</p>
+<p>b)打开Github -&gt; settings -&gt; SSH and GPG Keys -&gt; New SSH key -&gt; 填写一个Title，然后在下面框里粘贴刚才复制到内容，保存即可</p>
+<h5 id="3-2-3测试Github连接"><a href="#3-2-3测试Github连接" class="headerlink" title="3.2.3测试Github连接"></a>3.2.3测试Github连接</h5><p>测试命令</p>
+<blockquote>
+<p>ssh -T <a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#111;&#x6d;">&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#111;&#x6d;</a></p>
+</blockquote>
+<p>在终端中执行该命令，只要能出现以下内容，就是说明Github连接成功</p>
+<blockquote>
+<p>Hi [your name]! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<blockquote>
+<p>可能是因为第一次执行，打印了以下内容<br>The authenticity of host ‘github.com (20.205.243.166)’ can’t be established.<br>ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF&#x2F;zLDA0zPMSvHdkr4UvCOqU.<br>This key is not known by any other names<br>Are you sure you want to continue connecting (yes&#x2F;no&#x2F;[fingerprint])?<br>直接输入yes<br>然后又打印出以下内容<br>Warning: Permanently added ‘github.com’ (ED25519) to the list of known hosts.<br>PTY allocation request failed on channel 0<br>Hi heart14! You’ve successfully authenticated, but GitHub does not provide shell access.<br>同时发现yes之后，在~&#x2F;.ssh目录下生成了一个known_hosts文件</p>
+<p>说明已经成功配置好Github连接<br>再次执行ssh -T <a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#46;&#99;&#111;&#109;</a>命令，已经不会再问yes不yes了</p>
+</blockquote>
+<blockquote>
+<p>参考：<br>优雅的卸载Mac默认的Xcode附带的Git <a href="https://ld246.com/article/1399808431515">https://ld246.com/article/1399808431515</a><br>Git命令大全 <a href="https://www.runoob.com/note/56524">https://www.runoob.com/note/56524</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>macOS</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Mac mini</tag>
+        <tag>Apple Silicon</tag>
+        <tag>M2</tag>
+        <tag>macOS</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Base64从入门到入门</title>
     <url>/2023/03/24/Base64%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<h2 id="位、字节、字"><a href="#位、字节、字" class="headerlink" title="位、字节、字"></a>位、字节、字</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>位（bits，比特）、字节（Bytes）、字（words）是计算机数据存储的单位。位是最小的存储单位，每一个位存储一个1位的二进制码，一个字节由8位组成。而字通常为16、32或64个位组成。</p>
@@ -111,76 +181,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Mac mini M2(macOS Ventura 13.3.1)安装Git</title>
-    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Git/</url>
-    <content><![CDATA[<p>系列第一弹，新买了一台Mac mini M2，记录一下Java程序员的一些环境搭建过程</p>
-<h3 id="1-查看当前系统Git"><a href="#1-查看当前系统Git" class="headerlink" title="1.查看当前系统Git"></a>1.查看当前系统Git</h3><p>打开终端，执行git –version命令查看git版本，检查是否安装了git以及git版本</p>
-<p>但是此处报错了，主要信息为<em>xcode-select: note: No developer tools were found, requesting install.</em> 并且弹窗提示安装XCode。</p>
-<p>如果按弹窗提示去安装XCode的话，需要下载好几个Gb的内容，而且我也不做苹果应用开发，所以不想安装XCode。</p>
-<p>实际上，这里Git并非一定要安装XCode，而是需要一个Command Line Tools，可以去苹果开发者网站上单独下载这个Command Line Tools。</p>
-<p>打开苹果开发者网站（<a href="https://developer.apple.com/download/all/%EF%BC%89%EF%BC%8C%E7%99%BB%E5%BD%95AppleID%EF%BC%8C%E7%99%BB%E5%BD%95%E5%90%8E%E7%9C%8B%E5%88%B0More">https://developer.apple.com/download/all/），登录AppleID，登录后看到More</a> Downloads里面，会有Command Line Tools，也可以直接搜索关键字‘Command’，然后点击xxx.dmg下载，下载完成后双击打开进行安装即可。</p>
-<p>安装完成后，再次执行git –version命令查看git版本，成功输出git版本信息。</p>
-<p>但此时的git是macOS自带的git，据说不好用，所以一般都是重新下载官网的git。</p>
-<h3 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h3><p>通过Git官网(<a href="https://git-scm.com/download/mac)%E7%9A%84%E6%8C%87%E5%8D%97%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9D%A5%E5%AE%89%E8%A3%85Git%EF%BC%9A">https://git-scm.com/download/mac)的指南，有以下几种方式来安装Git：</a></p>
-<ul>
-<li><p>Homebrew<br>Install homebrew if you don’t already have it, then:<br>$ brew install git</p>
-</li>
-<li><p>MacPorts<br>Install MacPorts if you don’t already have it, then:<br>$ sudo port install git</p>
-</li>
-<li><p>Xcode<br>Apple ships a binary package of Git with Xcode.</p>
-</li>
-<li><p>Binary installer<br>Tim Harper provides an installer for Git. The latest version is 2.33.0, which was released over 1 year ago, on 2021-08-30.</p>
-</li>
-<li><p>Building from Source<br>If you prefer to build from source, you can find tarballs on kernel.org. The latest version is 2.40.0.</p>
-</li>
-<li><p>Installing git-gui<br>If you would like to install git-gui and gitk, git’s commit GUI and interactive history browser, you can do so using homebrew<br>$ brew install git-gui</p>
-</li>
-</ul>
-<p>而且！网上一些推荐教程里面都是说无需卸载mac自带的git，只需安装好新的git后把环境变量配置改为指向新的git home即可，但是，我这台新的mac mini，没有<del>&#x2F;.bash_profile文件，也没有</del>&#x2F;.zshrc文件，我也不知道现在的环境变量配置在哪里了，所以我决定不安装新的git了，就用系统自带的这个吧。。。</p>
-<h3 id="3-配置Git"><a href="#3-配置Git" class="headerlink" title="3.配置Git"></a>3.配置Git</h3><h4 id="3-1-基本配置"><a href="#3-1-基本配置" class="headerlink" title="3.1.基本配置"></a>3.1.基本配置</h4><p>查看Git全局配置</p>
-<blockquote>
-<p>git config –global –list </p>
-</blockquote>
-<p>设置Git用户信息</p>
-<blockquote>
-<p>git config –global user.name “your name”<br>git config –global user.email “your email”</p>
-</blockquote>
-<h4 id="3-2-配置Github"><a href="#3-2-配置Github" class="headerlink" title="3.2.配置Github"></a>3.2.配置Github</h4><h5 id="3-2-1生成ssh-key"><a href="#3-2-1生成ssh-key" class="headerlink" title="3.2.1生成ssh key"></a>3.2.1生成ssh key</h5><blockquote>
-<p>ssh-keygen -t rsa -C “your email”</p>
-</blockquote>
-<p>在终端中执行上述命令，回车后会有三次让你输入密码的地方，直接按回车键跳过即可</p>
-<p>命令执行完之后，生成的id_rsa和id_rsa.pub文件位于~&#x2F;.ssh目录</p>
-<h5 id="3-2-2Github配置"><a href="#3-2-2Github配置" class="headerlink" title="3.2.2Github配置"></a>3.2.2Github配置</h5><p>a)复制id_rsa.pub文件内的所有内容</p>
-<p>b)打开Github -&gt; settings -&gt; SSH and GPG Keys -&gt; New SSH key -&gt; 填写一个Title，然后在下面框里粘贴刚才复制到内容，保存即可</p>
-<h5 id="3-2-3测试Github连接"><a href="#3-2-3测试Github连接" class="headerlink" title="3.2.3测试Github连接"></a>3.2.3测试Github连接</h5><p>测试命令</p>
-<blockquote>
-<p>ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#109;</a></p>
-</blockquote>
-<p>在终端中执行该命令，只要能出现以下内容，就是说明Github连接成功</p>
-<blockquote>
-<p>Hi [your name]! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
-</blockquote>
-<blockquote>
-<p>可能是因为第一次执行，打印了以下内容<br>The authenticity of host ‘github.com (20.205.243.166)’ can’t be established.<br>ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF&#x2F;zLDA0zPMSvHdkr4UvCOqU.<br>This key is not known by any other names<br>Are you sure you want to continue connecting (yes&#x2F;no&#x2F;[fingerprint])?<br>直接输入yes<br>然后又打印出以下内容<br>Warning: Permanently added ‘github.com’ (ED25519) to the list of known hosts.<br>PTY allocation request failed on channel 0<br>Hi heart14! You’ve successfully authenticated, but GitHub does not provide shell access.<br>同时发现yes之后，在~&#x2F;.ssh目录下生成了一个known_hosts文件</p>
-<p>说明已经成功配置好Github连接<br>再次执行ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>命令，已经不会再问yes不yes了</p>
-</blockquote>
-<blockquote>
-<p>参考：<br>优雅的卸载Mac默认的Xcode附带的Git <a href="https://ld246.com/article/1399808431515">https://ld246.com/article/1399808431515</a><br>Git命令大全 <a href="https://www.runoob.com/note/56524">https://www.runoob.com/note/56524</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>Mac mini</tag>
-        <tag>Apple Silicon</tag>
-        <tag>M2</tag>
-        <tag>macOS</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mac mini M2(macOS Ventura 13.3.1)安装Homebrew</title>
     <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Homebrew/</url>
     <content><![CDATA[<h3 id="1-查看是否已安装了homebrew"><a href="#1-查看是否已安装了homebrew" class="headerlink" title="1.查看是否已安装了homebrew"></a>1.查看是否已安装了homebrew</h3><p>打开终端，执行命令 brew -v<br>显示zsh: command not found: brew<br>说明还未安装</p>
@@ -214,6 +214,142 @@
         <tag>M2</tag>
         <tag>macOS</tag>
         <tag>Homebrew</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac mini M2(macOS Ventura 13.3.1)安装Node.js</title>
+    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Node-js/</url>
+    <content><![CDATA[<h3 id="1-查看是否已安装Node-js"><a href="#1-查看是否已安装Node-js" class="headerlink" title="1.查看是否已安装Node.js"></a>1.查看是否已安装Node.js</h3><p>where node<br>node -v<br>两个命令分别返回<br>node not found<br>zsh: command not found: node<br>应该是没有安装过node的，而且我这新电脑</p>
+<h3 id="2-关于node-js和nvm"><a href="#2-关于node-js和nvm" class="headerlink" title="2.关于node.js和nvm"></a>2.关于node.js和nvm</h3><p>node.js<br>nvm是node的版本管理工具，它可以便捷的下载更新管理node的版本，所以安装这个就好了，使用它来下载安装node</p>
+<h3 id="3-安装nvm"><a href="#3-安装nvm" class="headerlink" title="3.安装nvm"></a>3.安装nvm</h3><p>nvm官方Github页面 <a href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a><br>根据Readme里面的操作说明，使用下面的命令来安装nvm<br>curl -o- <a href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh">https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh</a> | bash</p>
+<p>但是终端打印错误<br>curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 32 ms: Couldn’t connect to server<br>又不行<br>意思是网络连不上服务器</p>
+<p>通过修改hosts的方法解决这个问题<br>在<a href="https://site.ip138.com/raw.Githubusercontent.com/%E6%9F%A5%E8%AF%A2ip">https://site.ip138.com/raw.Githubusercontent.com/查询ip</a><br>然后在终端执行sudo vim &#x2F;etc&#x2F;hosts命令编辑hosts文件<br>在末尾添加上<br>185.199.108.133 raw.githubusercontent.com<br>185.199.109.133 raw.githubusercontent.com<br>185.199.110.133 raw.githubusercontent.com<br>185.199.111.133 raw.githubusercontent.com<br>182.43.124.6 raw.githubusercontent.com<br>20.205.243.166 github.com<br>保存退出</p>
+<p>重新执行安装命令</p>
+<p>这次倒是下载成功了，但是紧接着又来了一个git clone的错误<br>&#x3D;&gt; Cloning into ‘&#x2F;Users&#x2F;liwenfei&#x2F;.nvm’…<br>fatal: unable to access ‘<a href="https://github.com/nvm-sh/nvm.git/">https://github.com/nvm-sh/nvm.git/</a>‘: HTTP&#x2F;2 stream 1 was not closed cleanly before end of the underlying stream<br>Failed to clone nvm repo. Please report this!</p>
+<p>网络不好，重试一次，依然报错<br>&#x3D;&gt; Cloning into ‘&#x2F;Users&#x2F;liwenfei&#x2F;.nvm’…<br>fatal: unable to access ‘<a href="https://github.com/nvm-sh/nvm.git/">https://github.com/nvm-sh/nvm.git/</a>‘: Recv failure: Operation timed out<br>Failed to clone nvm repo. Please report this!</p>
+<p>网络不好，继续重试</p>
+<p>……</p>
+<p>终于试成功了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">liwenfei@macli Documents % curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100 15916  100 15916    0     0    206      0  0:01:17  0:01:17 --:--:--  4483</span><br><span class="line">=&gt; Downloading nvm from git to <span class="string">&#x27;/Users/liwenfei/.nvm&#x27;</span></span><br><span class="line">=&gt; Cloning into <span class="string">&#x27;/Users/liwenfei/.nvm&#x27;</span>...</span><br><span class="line">remote: Enumerating objects: 359, <span class="keyword">done</span>.</span><br><span class="line">remote: Counting objects: 100% (359/359), <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (305/305), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 359 (delta 40), reused 169 (delta 28), pack-reused 0</span><br><span class="line">Receiving objects: 100% (359/359), 219.46 KiB | 881.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">Resolving deltas: 100% (40/40), <span class="keyword">done</span>.</span><br><span class="line">remote: Enumerating objects: 54, <span class="keyword">done</span>.</span><br><span class="line">remote: Counting objects: 100% (54/54), <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (28/28), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 28 (delta 26), reused 2 (delta 0), pack-reused 0</span><br><span class="line">Unpacking objects: 100% (28/28), 4.38 KiB | 204.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">From https://github.com/nvm-sh/nvm</span><br><span class="line"></span><br><span class="line"> * tag               v0.39.3    -&gt; FETCH_HEAD</span><br><span class="line">* (HEAD detached at FETCH_HEAD)</span><br><span class="line">  master</span><br><span class="line">  =&gt; Compressing and cleaning up git repository</span><br><span class="line"></span><br><span class="line">=&gt; Appending nvm <span class="built_in">source</span> string to /Users/liwenfei/.zshrc</span><br><span class="line">=&gt; Appending bash_completion <span class="built_in">source</span> string to /Users/liwenfei/.zshrc</span><br><span class="line">=&gt; Close and reopen your terminal to start using nvm or run the following to use it now:</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>验证安装</p>
+<p>要验证nvm是否已安装，请执行以下操作：</p>
+<blockquote>
+<p>command -v nvm</p>
+</blockquote>
+<p>如果安装成功，它应该输出nvm。请注意，which nvm不起作用，因为nvm是一个源shell函数，而不是可执行的二进制文件。<br>注意：在Linux上，在运行安装脚本后，如果您在键入command -v nvm后获得nvm: command not found或没有看到来自终端的反馈，只需关闭当前终端，打开新终端，然后再次尝试验证。</p>
+<p>如上面所说，在刚安装成功时，在终端执行command -v nvm命令，没有任何反应<br>退出终端重新打开终端再次执行command -v nvm命令，成功打印出nvm<br>说明已经安装成功</p>
+<p>4.使用nvm安装node.js<br>nvm ls-remote 命令查看所有可安装的node版本<br>nvm install node 命令进行安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">liwenfei@macli ~ % nvm install node</span><br><span class="line">Downloading and installing node v19.9.0...</span><br><span class="line">Downloading https://nodejs.org/dist/v19.9.0/node-v19.9.0-darwin-arm64.tar.xz...</span><br><span class="line"><span class="comment">######################################################################################################################################### 100.0%</span></span><br><span class="line">Computing checksum with shasum -a 256</span><br><span class="line">Checksums matched!</span><br><span class="line">Now using node v19.9.0 (npm v9.6.3)</span><br><span class="line">Creating default <span class="built_in">alias</span>: default -&gt; node (-&gt; v19.9.0)</span><br><span class="line">liwenfei@macli ~ % </span><br><span class="line">liwenfei@macli ~ % node -v</span><br><span class="line">v19.9.0</span><br></pre></td></tr></table></figure>
+
+<p>或者使用nvm install 16.20.0这样指定版本号的命令，来安装指定版本</p>
+<p>然后node -v成功输出node版本信息<br>安装完成！</p>
+<p>5.使用nvm切换node.js的版本<br>nvm ls命令来查看本地已安装的node版本<br>nvm ls-remote命令来查看远程所有node版本</p>
+<p>然后使用nvm install xx.xx.xx来安装指定版本的node<br>在macOS上，安装完成后并不会立即生效，系统使用的依然是之前的版本</p>
+<p>使用nvm alias default xx.xx.xx 来切换系统使用的node版本</p>
+<p>然后再次查看版本node -v</p>
+<p>成功！</p>
+]]></content>
+      <categories>
+        <category>macOS</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Mac mini</tag>
+        <tag>Apple Silicon</tag>
+        <tag>M2</tag>
+        <tag>macOS</tag>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot多环境配置文件</title>
+    <url>/2023/04/28/Spring-Boot%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>1.在resource目录下新建profiles目录</p>
+<p>2.在profiles目录下新建wfli  macli  test  prod四个目录，分别存放四个环境下的配置文件</p>
+<p>3.在pom.xml文件添加profiles节点配置</p>
+<blockquote>
+<p>如果是多module项目，在需要打包的那个项目的pom里写而不是在父pom写，如果是单体项目，就直接在pom里写</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>macli<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>macli<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>wfli<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>wfli<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>test<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这一步添加完成后，在Jetbrains IDEA窗口右侧边上的Maven插件里，就可以看到profiles里面已经多出了几个环境的选项了，并且activation激活的环境上打了勾</p>
+<p>4.在pom.xml文件添加build节点配置</p>
+<blockquote>
+<p>如果是多module项目，在需要打包的那个项目的pom里写而不是在父pom写，如果是单体项目，就直接在pom里写</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/resources/profiles/$&#123;package.environment&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span><span class="comment">&lt;!--动态配置当前生效配置文件的目录--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span><span class="comment">&lt;!--这个是过滤什么的呢？--&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span><span class="comment">&lt;!--其实这个resource注释掉也没啥影响，不知道为什么写，也不知道为什么不写--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">excludes</span>&gt;</span><span class="comment">&lt;!--配置打包时不要将源文件放到包内--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>profiles/macli<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>profiles/wfli<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>profiles/test<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>profiles/prod<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.**<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--maven打包插件--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--&lt;version&gt;2.18.1&lt;/version&gt;--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">skipTests</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skipTests</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>5.在每个application.properties中添加</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring.profiles.active</span>=<span class="string">@package.environment@</span></span><br></pre></td></tr></table></figure>
+
+<p>6.启动成功</p>
+<blockquote>
+<p>启动时，可以通过maven插件上的profiles属性来选择生效的环境配置</p>
+</blockquote>
+<p>7.打包成功</p>
+<blockquote>
+<p>打包时，可以通过maven插件上的profiles属性来选择生效的环境配置</p>
+<p>通过maven命令打包时，可以通过-P参数来指定生效的环境配置</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>SpringBoot</tag>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac mini M2(macOS Ventura 13.3.1)安装jdk8</title>
+    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85jdk8/</url>
+    <content><![CDATA[<p>这个安装非常简单，简单到我怀疑是不是有问题！</p>
+<p>1.官网下载jdk-8u361-macosx-x64.dmg<br>2.在下载目录双击打开dmg,弹出的文件夹里面有个pkg<br>3.双击打开pkg文件，按照指示点击继续或者下一步，即可完成安装</p>
+<p>ps<br>1.第一步打开dmg的时候，可能会提醒需要安装rosetta，安装即可<br>2.安装完打开终端执行java -version即可查看到版本号，竟然无需配置环境变量？为什么？<br>echo $JAVA_HOME命令打印为空！！！</p>
+<p>where java命令打印结果为&#x2F;usr&#x2F;bin&#x2F;java<br>ls -al &#x2F;usr&#x2F;bin | grep java命令打印结果<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 java<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javac<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javadoc<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javah<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javap<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javapackager<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javaws</p>
+<p>所以jdk安装目录在哪里？那些bin lib jar什么的去哪了？<br>在这里：&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;jdk1.8.0_361.jdk&#x2F;Contents&#x2F;Home</p>
+]]></content>
+      <categories>
+        <category>macOS</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+        <tag>Mac mini</tag>
+        <tag>Apple Silicon</tag>
+        <tag>M2</tag>
+        <tag>macOS</tag>
+        <tag>Java</tag>
+        <tag>Jdk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2018/02/12/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>建站</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>主题</tag>
       </tags>
   </entry>
   <entry>
@@ -270,142 +406,6 @@
         <tag>M2</tag>
         <tag>macOS</tag>
         <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac mini M2(macOS Ventura 13.3.1)安装Node.js</title>
-    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85Node-js/</url>
-    <content><![CDATA[<h3 id="1-查看是否已安装Node-js"><a href="#1-查看是否已安装Node-js" class="headerlink" title="1.查看是否已安装Node.js"></a>1.查看是否已安装Node.js</h3><p>where node<br>node -v<br>两个命令分别返回<br>node not found<br>zsh: command not found: node<br>应该是没有安装过node的，而且我这新电脑</p>
-<h3 id="2-关于node-js和nvm"><a href="#2-关于node-js和nvm" class="headerlink" title="2.关于node.js和nvm"></a>2.关于node.js和nvm</h3><p>node.js<br>nvm是node的版本管理工具，它可以便捷的下载更新管理node的版本，所以安装这个就好了，使用它来下载安装node</p>
-<h3 id="3-安装nvm"><a href="#3-安装nvm" class="headerlink" title="3.安装nvm"></a>3.安装nvm</h3><p>nvm官方Github页面 <a href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a><br>根据Readme里面的操作说明，使用下面的命令来安装nvm<br>curl -o- <a href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh">https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh</a> | bash</p>
-<p>但是终端打印错误<br>curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 32 ms: Couldn’t connect to server<br>又不行<br>意思是网络连不上服务器</p>
-<p>通过修改hosts的方法解决这个问题<br>在<a href="https://site.ip138.com/raw.Githubusercontent.com/%E6%9F%A5%E8%AF%A2ip">https://site.ip138.com/raw.Githubusercontent.com/查询ip</a><br>然后在终端执行sudo vim &#x2F;etc&#x2F;hosts命令编辑hosts文件<br>在末尾添加上<br>185.199.108.133 raw.githubusercontent.com<br>185.199.109.133 raw.githubusercontent.com<br>185.199.110.133 raw.githubusercontent.com<br>185.199.111.133 raw.githubusercontent.com<br>182.43.124.6 raw.githubusercontent.com<br>20.205.243.166 github.com<br>保存退出</p>
-<p>重新执行安装命令</p>
-<p>这次倒是下载成功了，但是紧接着又来了一个git clone的错误<br>&#x3D;&gt; Cloning into ‘&#x2F;Users&#x2F;liwenfei&#x2F;.nvm’…<br>fatal: unable to access ‘<a href="https://github.com/nvm-sh/nvm.git/">https://github.com/nvm-sh/nvm.git/</a>‘: HTTP&#x2F;2 stream 1 was not closed cleanly before end of the underlying stream<br>Failed to clone nvm repo. Please report this!</p>
-<p>网络不好，重试一次，依然报错<br>&#x3D;&gt; Cloning into ‘&#x2F;Users&#x2F;liwenfei&#x2F;.nvm’…<br>fatal: unable to access ‘<a href="https://github.com/nvm-sh/nvm.git/">https://github.com/nvm-sh/nvm.git/</a>‘: Recv failure: Operation timed out<br>Failed to clone nvm repo. Please report this!</p>
-<p>网络不好，继续重试</p>
-<p>……</p>
-<p>终于试成功了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">liwenfei@macli Documents % curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100 15916  100 15916    0     0    206      0  0:01:17  0:01:17 --:--:--  4483</span><br><span class="line">=&gt; Downloading nvm from git to <span class="string">&#x27;/Users/liwenfei/.nvm&#x27;</span></span><br><span class="line">=&gt; Cloning into <span class="string">&#x27;/Users/liwenfei/.nvm&#x27;</span>...</span><br><span class="line">remote: Enumerating objects: 359, <span class="keyword">done</span>.</span><br><span class="line">remote: Counting objects: 100% (359/359), <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (305/305), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 359 (delta 40), reused 169 (delta 28), pack-reused 0</span><br><span class="line">Receiving objects: 100% (359/359), 219.46 KiB | 881.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">Resolving deltas: 100% (40/40), <span class="keyword">done</span>.</span><br><span class="line">remote: Enumerating objects: 54, <span class="keyword">done</span>.</span><br><span class="line">remote: Counting objects: 100% (54/54), <span class="keyword">done</span>.</span><br><span class="line">remote: Compressing objects: 100% (28/28), <span class="keyword">done</span>.</span><br><span class="line">remote: Total 28 (delta 26), reused 2 (delta 0), pack-reused 0</span><br><span class="line">Unpacking objects: 100% (28/28), 4.38 KiB | 204.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">From https://github.com/nvm-sh/nvm</span><br><span class="line"></span><br><span class="line"> * tag               v0.39.3    -&gt; FETCH_HEAD</span><br><span class="line">* (HEAD detached at FETCH_HEAD)</span><br><span class="line">  master</span><br><span class="line">  =&gt; Compressing and cleaning up git repository</span><br><span class="line"></span><br><span class="line">=&gt; Appending nvm <span class="built_in">source</span> string to /Users/liwenfei/.zshrc</span><br><span class="line">=&gt; Appending bash_completion <span class="built_in">source</span> string to /Users/liwenfei/.zshrc</span><br><span class="line">=&gt; Close and reopen your terminal to start using nvm or run the following to use it now:</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<p>验证安装</p>
-<p>要验证nvm是否已安装，请执行以下操作：</p>
-<blockquote>
-<p>command -v nvm</p>
-</blockquote>
-<p>如果安装成功，它应该输出nvm。请注意，which nvm不起作用，因为nvm是一个源shell函数，而不是可执行的二进制文件。<br>注意：在Linux上，在运行安装脚本后，如果您在键入command -v nvm后获得nvm: command not found或没有看到来自终端的反馈，只需关闭当前终端，打开新终端，然后再次尝试验证。</p>
-<p>如上面所说，在刚安装成功时，在终端执行command -v nvm命令，没有任何反应<br>退出终端重新打开终端再次执行command -v nvm命令，成功打印出nvm<br>说明已经安装成功</p>
-<p>4.使用nvm安装node.js<br>nvm ls-remote 命令查看所有可安装的node版本<br>nvm install node 命令进行安装</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">liwenfei@macli ~ % nvm install node</span><br><span class="line">Downloading and installing node v19.9.0...</span><br><span class="line">Downloading https://nodejs.org/dist/v19.9.0/node-v19.9.0-darwin-arm64.tar.xz...</span><br><span class="line"><span class="comment">######################################################################################################################################### 100.0%</span></span><br><span class="line">Computing checksum with shasum -a 256</span><br><span class="line">Checksums matched!</span><br><span class="line">Now using node v19.9.0 (npm v9.6.3)</span><br><span class="line">Creating default <span class="built_in">alias</span>: default -&gt; node (-&gt; v19.9.0)</span><br><span class="line">liwenfei@macli ~ % </span><br><span class="line">liwenfei@macli ~ % node -v</span><br><span class="line">v19.9.0</span><br></pre></td></tr></table></figure>
-
-<p>或者使用nvm install 16.20.0这样指定版本号的命令，来安装指定版本</p>
-<p>然后node -v成功输出node版本信息<br>安装完成！</p>
-<p>5.使用nvm切换node.js的版本<br>nvm ls命令来查看本地已安装的node版本<br>nvm ls-remote命令来查看远程所有node版本</p>
-<p>然后使用nvm install xx.xx.xx来安装指定版本的node<br>在macOS上，安装完成后并不会立即生效，系统使用的依然是之前的版本</p>
-<p>使用nvm alias default xx.xx.xx 来切换系统使用的node版本</p>
-<p>然后再次查看版本node -v</p>
-<p>成功！</p>
-]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>Mac mini</tag>
-        <tag>Apple Silicon</tag>
-        <tag>M2</tag>
-        <tag>macOS</tag>
-        <tag>Node</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mac mini M2(macOS Ventura 13.3.1)安装jdk8</title>
-    <url>/2023/04/18/Mac-mini-M2-macOS-Ventura-13-3-1-%E5%AE%89%E8%A3%85jdk8/</url>
-    <content><![CDATA[<p>这个安装非常简单，简单到我怀疑是不是有问题！</p>
-<p>1.官网下载jdk-8u361-macosx-x64.dmg<br>2.在下载目录双击打开dmg,弹出的文件夹里面有个pkg<br>3.双击打开pkg文件，按照指示点击继续或者下一步，即可完成安装</p>
-<p>ps<br>1.第一步打开dmg的时候，可能会提醒需要安装rosetta，安装即可<br>2.安装完打开终端执行java -version即可查看到版本号，竟然无需配置环境变量？为什么？<br>echo $JAVA_HOME命令打印为空！！！</p>
-<p>where java命令打印结果为&#x2F;usr&#x2F;bin&#x2F;java<br>ls -al &#x2F;usr&#x2F;bin | grep java命令打印结果<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 java<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javac<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javadoc<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javah<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javap<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javapackager<br>-rwxr-xr-x   52 root   wheel    168384  4  2 00:46 javaws</p>
-<p>所以jdk安装目录在哪里？那些bin lib jar什么的去哪了？<br>在这里：&#x2F;Library&#x2F;Java&#x2F;JavaVirtualMachines&#x2F;jdk1.8.0_361.jdk&#x2F;Contents&#x2F;Home</p>
-]]></content>
-      <categories>
-        <category>macOS</category>
-      </categories>
-      <tags>
-        <tag>Mac</tag>
-        <tag>Mac mini</tag>
-        <tag>Apple Silicon</tag>
-        <tag>M2</tag>
-        <tag>macOS</tag>
-        <tag>Java</tag>
-        <tag>Jdk</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring Boot多环境配置文件</title>
-    <url>/2023/04/28/Spring-Boot%E5%A4%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<p>1.在resource目录下新建profiles目录</p>
-<p>2.在profiles目录下新建wfli  macli  test  prod四个目录，分别存放四个环境下的配置文件</p>
-<p>3.在pom.xml文件添加profiles节点配置</p>
-<blockquote>
-<p>如果是多module项目，在需要打包的那个项目的pom里写而不是在父pom写，如果是单体项目，就直接在pom里写</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>macli<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>macli<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>wfli<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>wfli<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>test<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">package.environment</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">package.environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这一步添加完成后，在Jetbrains IDEA窗口右侧边上的Maven插件里，就可以看到profiles里面已经多出了几个环境的选项了，并且activation激活的环境上打了勾</p>
-<p>4.在pom.xml文件添加build节点配置</p>
-<blockquote>
-<p>如果是多module项目，在需要打包的那个项目的pom里写而不是在父pom写，如果是单体项目，就直接在pom里写</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/resources/profiles/$&#123;package.environment&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span><span class="comment">&lt;!--动态配置当前生效配置文件的目录--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span><span class="comment">&lt;!--这个是过滤什么的呢？--&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span><span class="comment">&lt;!--其实这个resource注释掉也没啥影响，不知道为什么写，也不知道为什么不写--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">excludes</span>&gt;</span><span class="comment">&lt;!--配置打包时不要将源文件放到包内--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>profiles/macli<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>profiles/wfli<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>profiles/test<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>profiles/prod<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.properties<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;basedir&#125;/src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.**<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--maven打包插件--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--&lt;version&gt;2.18.1&lt;/version&gt;--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">skipTests</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skipTests</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>5.在每个application.properties中添加</p>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring.profiles.active</span>=<span class="string">@package.environment@</span></span><br></pre></td></tr></table></figure>
-
-<p>6.启动成功</p>
-<blockquote>
-<p>启动时，可以通过maven插件上的profiles属性来选择生效的环境配置</p>
-</blockquote>
-<p>7.打包成功</p>
-<blockquote>
-<p>打包时，可以通过maven插件上的profiles属性来选择生效的环境配置</p>
-<p>通过maven命令打包时，可以通过-P参数来指定生效的环境配置</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
-        <tag>Java</tag>
-        <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2018/02/12/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>建站</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>主题</tag>
       </tags>
   </entry>
   <entry>
@@ -581,16 +581,16 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>然后将生成的rsa.pub文件内容复制粘贴到github个人设置中的settings–&gt;ssh key，即可进行代码上传下载。</p>
-<h4 id="git提交记录中的用户信息问题"><a href="#git提交记录中的用户信息问题" class="headerlink" title="git提交记录中的用户信息问题"></a>git提交记录中的用户信息问题</h4><p>公司gitlab账号是我的公司邮箱<a href="mailto:&#119;&#102;&#108;&#x69;&#x40;&#x63;&#104;&#x69;&#110;&#x61;&#117;&#x6d;&#115;&#46;&#99;&#x6f;&#x6d;">&#119;&#102;&#108;&#x69;&#x40;&#x63;&#104;&#x69;&#110;&#x61;&#117;&#x6d;&#115;&#46;&#99;&#x6f;&#x6d;</a>，GitHub是我的个人邮箱<a href="mailto:&#x6c;&#x77;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109;">&#x6c;&#x77;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109;</a>。</p>
+<h4 id="git提交记录中的用户信息问题"><a href="#git提交记录中的用户信息问题" class="headerlink" title="git提交记录中的用户信息问题"></a>git提交记录中的用户信息问题</h4><p>公司gitlab账号是我的公司邮箱<a href="mailto:&#119;&#x66;&#108;&#x69;&#x40;&#99;&#104;&#105;&#x6e;&#x61;&#117;&#x6d;&#x73;&#46;&#99;&#x6f;&#x6d;">&#119;&#x66;&#108;&#x69;&#x40;&#99;&#104;&#105;&#x6e;&#x61;&#117;&#x6d;&#x73;&#46;&#99;&#x6f;&#x6d;</a>，GitHub是我的个人邮箱<a href="mailto:&#108;&#x77;&#102;&#x31;&#52;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#108;&#x77;&#102;&#x31;&#52;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a>。</p>
 <p>由于主要是在公司使用，所以在git通用配置上，设置用户名和邮箱为公司：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;wfli&quot;</span>  </span><br><span class="line">git config --global user.email <span class="string">&quot;wfli@chinaums.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>这样在公司，什么都不用管，直接上传下载即可，代码提交记录上显示的就是公司里的个人信息了。</p>
-<p>然后，在家里的时候，如果也要提交代码，GitHub上显示的提交记录，也是公司里的个人信息(<a href="mailto:&#119;&#x66;&#x6c;&#105;&#64;&#x63;&#x68;&#x69;&#x6e;&#x61;&#x75;&#x6d;&#115;&#46;&#x63;&#111;&#x6d;">&#119;&#x66;&#x6c;&#105;&#64;&#x63;&#x68;&#x69;&#x6e;&#x61;&#x75;&#x6d;&#115;&#46;&#x63;&#111;&#x6d;</a>)，这样其实也没问题，都是自己。但是如果想让它显示为GitHub的注册用户名和邮箱的话，可以在每个从GitHub下载下来的仓库目录下，单独设置user.name和email属性：</p>
+<p>然后，在家里的时候，如果也要提交代码，GitHub上显示的提交记录，也是公司里的个人信息(<a href="mailto:&#119;&#102;&#108;&#x69;&#x40;&#99;&#x68;&#x69;&#110;&#x61;&#x75;&#x6d;&#x73;&#46;&#x63;&#x6f;&#109;">&#119;&#102;&#108;&#x69;&#x40;&#99;&#x68;&#x69;&#110;&#x61;&#x75;&#x6d;&#x73;&#46;&#x63;&#x6f;&#109;</a>)，这样其实也没问题，都是自己。但是如果想让它显示为GitHub的注册用户名和邮箱的话，可以在每个从GitHub下载下来的仓库目录下，单独设置user.name和email属性：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">&quot;heart14&quot;</span>  </span><br><span class="line">git config --<span class="built_in">local</span> user.email <span class="string">&quot;lwf14@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>这个–local参数使得这个配置只在这个目录生效，所以不会影响公司项目的提交。</p>
-<p>这样配置之后，即可实现，公司项目通过HTTPS方式，以wfli&#x2F;<a href="mailto:&#119;&#102;&#x6c;&#105;&#64;&#99;&#x68;&#105;&#110;&#97;&#117;&#x6d;&#x73;&#46;&#x63;&#x6f;&#109;">&#119;&#102;&#x6c;&#105;&#64;&#99;&#x68;&#105;&#110;&#97;&#117;&#x6d;&#x73;&#46;&#x63;&#x6f;&#109;</a>用户提交代码，个人项目通过SSH方式，以heart14&#x2F;<a href="mailto:&#x6c;&#119;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#46;&#99;&#111;&#109;">&#x6c;&#119;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#46;&#99;&#111;&#109;</a>用户提交代码。</p>
+<p>这样配置之后，即可实现，公司项目通过HTTPS方式，以wfli&#x2F;<a href="mailto:&#119;&#102;&#108;&#105;&#64;&#99;&#x68;&#x69;&#x6e;&#x61;&#117;&#x6d;&#x73;&#46;&#x63;&#x6f;&#109;">&#119;&#102;&#108;&#105;&#64;&#99;&#x68;&#x69;&#x6e;&#x61;&#117;&#x6d;&#x73;&#46;&#x63;&#x6f;&#109;</a>用户提交代码，个人项目通过SSH方式，以heart14&#x2F;<a href="mailto:&#x6c;&#x77;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#x6c;&#x77;&#102;&#x31;&#x34;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a>用户提交代码。</p>
 <blockquote>
 <p>参考：<br><a href="https://www.cnblogs.com/yanglang/p/9563496.html">https://www.cnblogs.com/yanglang/p/9563496.html</a><br><a href="https://www.cnblogs.com/hezhi/p/10317642.html">https://www.cnblogs.com/hezhi/p/10317642.html</a></p>
 </blockquote>
